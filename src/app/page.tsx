@@ -1,7 +1,9 @@
+import SidebarHeader from "@/components/layout/Sidebar/SidebarHeader";
+
 export default function Home() {
   return (
     <main>
-      <h1>Skillora Frontend Setup Complete</h1>
+      <SidebarHeader />
     </main>
   );
 }
