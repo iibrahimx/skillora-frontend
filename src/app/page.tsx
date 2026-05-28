@@ -1,9 +1,9 @@
-import SidebarHeader from "@/components/layout/Sidebar/SidebarHeader";
+import Sidebar from "@/components/layout/Sidebar/Sidebar";
 
 export default function Home() {
   return (
     <main>
-      <SidebarHeader />
+      <Sidebar />
     </main>
   );
 }

@@ -9,9 +9,10 @@ export default function SidebarHeader() {
         width={64}
         height={64}
         priority
+        className="brightness-0"
       />
 
-      <h1 className="text-xl font-bold tracking-tight">SkillOra</h1>
+      <h1 className="text-xl text-white font-bold tracking-tight">SkillOra</h1>
     </div>
   );
 }
