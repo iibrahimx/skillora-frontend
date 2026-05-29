@@ -1,9 +1,5 @@
-import Sidebar from "@/components/layout/Sidebar/Sidebar";
+import WelcomeScreen from "@/components/Home/WelcomeScreen";
 
 export default function Home() {
-  return (
-    <main>
-      <Sidebar />
-    </main>
-  );
+  return <WelcomeScreen />;
 }
