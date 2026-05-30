@@ -1,7 +1,9 @@
+import DashboardScreen from "@/components/dashboard/DashboardScreen";
+
 export default function Dashboard() {
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold">Dashboard</h1>
+      <DashboardScreen />
     </div>
   );
 }
