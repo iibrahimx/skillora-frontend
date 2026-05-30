@@ -4,10 +4,12 @@ export default function AuthLayout({
   children,
   title,
   subtitle,
+  leftImgSrc = "/IMAGES/auth/sign-up.png",
 }: {
   children: React.ReactNode;
   title: string;
   subtitle: string;
+  leftImgSrc?: string;
 }) {
   return (
     <div className="min-h-screen flex bg-[#F5F5F5]">
@@ -16,7 +18,7 @@ export default function AuthLayout({
       <div className="hidden lg:flex lg:w-1/2 relative">
 
         <Image
-          src="/IMAGES/auth/signin.png"
+          src={leftImgSrc}
           alt="auth image"
           fill
           className="object-cover"

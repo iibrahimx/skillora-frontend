@@ -20,6 +20,7 @@ export default function SignInPage() {
       <AuthLayout
         title="Welcome back"
         subtitle="Login to your account"
+        leftImgSrc="/IMAGES/auth/sign-in.png"
       >
 
         <Formik
@@ -64,10 +65,6 @@ export default function SignInPage() {
 
                   <div className="flex-1 h-px bg-gray-300" />
                 </div>
-
-
-
-
               </div>
             </Form>
           )}
