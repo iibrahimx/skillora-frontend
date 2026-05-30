@@ -1,33 +1,78 @@
-import { Info, TrendingUp, CheckCircle2 } from "lucide-react";
+"use client";
 
-export default function CompletionRateCard() {
+import {
+  BarChart,
+  Bar,
+  LabelList,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
+
+const data = [
+  { day: "May 12", rate: 52 },
+  { day: "May 13", rate: 59 },
+  { day: "May 14", rate: 62 },
+  { day: "May 15", rate: 70 },
+  { day: "May 16", rate: 80 },
+  { day: "May 17", rate: 87 },
+  { day: "May 18", rate: 76 },
+];
+
+export default function CompletionRateChart() {
   return (
-    <div className="flex h-[146px] flex-col rounded-2xl border border-[#e2e8f0] bg-[#EEF4FF] p-5 shadow-sm">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <p className="text-sm font-semibold text-[#2563EB]">Completion Rates</p>
+    <div className="h-full min-w-0 overflow-hidden rounded-3xl border border-[#e2e8f0] bg-[#F2F0F0] p-6 shadow-sm">
+      <div className="mb-6 flex items-center justify-between">
+        <h3 className="text-lg font-bold text-black">
+          Completion Rate Over Time
+        </h3>
 
-        <Info size={14} className="text-[#94a3b8]" />
+        <select className="rounded-md border border-[#cbd5e1] px-3 py-2 text-sm">
+          <option>Last 7 Days</option>
+        </select>
       </div>
 
-      {/* Main Content */}
-      <div className="mt-4 flex items-center gap-4">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#DBEAFE]">
-          <CheckCircle2 size={30} className="text-[#2563EB]" />
-        </div>
-
-        <h2 className="text-[35px] font-bold leading-none text-[#0f172a]">
-          70%
-        </h2>
-      </div>
-
-      {/* Footer */}
-      <div className="mt-2 flex items-center gap-2">
-        <TrendingUp size={14} className="text-green-600" />
-
-        <span className="text-sm font-semibold text-green-600">+7%</span>
-
-        <span className="text-xs text-[#64748b]">vs last 7 days</span>
+      <div className="h-[300px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={data}
+            margin={{
+              top: 20,
+              right: 0,
+              left: -4,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid
+              vertical={false}
+              stroke="#e2e8f0"
+              strokeDasharray="3 3"
+            />
+            <XAxis dataKey="day" />
+            <YAxis
+              width={50}
+              domain={[0, 100]}
+              ticks={[0, 20, 40, 60, 80, 100]}
+              tickFormatter={(value) => `${value}%`}
+            />
+            <Tooltip />
+            <Bar
+              dataKey="rate"
+              fill="#3665CA"
+              radius={[6, 6, 0, 0]}
+              maxBarSize={60}
+            >
+              <LabelList
+                dataKey="rate"
+                position="top"
+                formatter={(value) => `${value}%`}
+                className="fill-[#334155] text-xs"
+              />
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );

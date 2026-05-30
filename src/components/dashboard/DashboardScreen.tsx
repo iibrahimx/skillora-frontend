@@ -1,5 +1,6 @@
 import PageHeader from "@/components/common/PageHeader";
 import DashboardStats from "./DashboardStats";
+import DashboardCharts from "./DashboardCharts";
 
 export default function DashboardScreen() {
   return (
@@ -10,6 +11,8 @@ export default function DashboardScreen() {
       />
 
       <DashboardStats />
+
+      <DashboardCharts />
     </div>
   );
 }
