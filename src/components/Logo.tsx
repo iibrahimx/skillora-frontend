@@ -5,10 +5,7 @@ type LogoProps = {
   height?: number;
 };
 
-export default function Logo({
-  width = 96,
-  height = 96,
-}: LogoProps) {
+export default function Logo({ width = 96, height = 96 }: LogoProps) {
   return (
     <Image
       src="/icons/skillora-logo.svg"
@@ -19,7 +16,3 @@ export default function Logo({
     />
   );
 }
-
-
-
-
