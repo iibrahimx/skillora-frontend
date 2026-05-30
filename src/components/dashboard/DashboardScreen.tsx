@@ -1,4 +1,5 @@
 import PageHeader from "@/components/common/PageHeader";
+import DashboardStats from "./DashboardStats";
 
 export default function DashboardScreen() {
   return (
@@ -7,6 +8,8 @@ export default function DashboardScreen() {
         title="Dashboard Overview"
         subtitle="Track training performance and compliance across your workforce"
       />
+
+      <DashboardStats />
     </div>
   );
 }
