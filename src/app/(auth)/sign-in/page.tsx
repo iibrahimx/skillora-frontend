@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import ComingSoon from "@/components/common/ComingSoon";
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
@@ -21,33 +22,68 @@ export default function SignInPage() {
         subtitle="Login to your account"
       >
 
-      <Formik
-  initialValues={{ email: "", password: "" }}
-  validationSchema={signInSchema}
-  onSubmit={(values) => {
-    console.log(values);
-  }}
->
-  {() => (
-    <Form>
-   <div className="flex flex-col space-y-6">
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={signInSchema}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+        >
+          {() => (
+            <Form>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-700">
+                  Email Address
+                </label>
+                <FormField
+                  name="email"
+                  placeholder="Enter your email"
+                />
+              </div>
 
-    <FormField name="email" placeholder="Email" />
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <FormField
+                  name="password"
+                  placeholder="Enter your password"
+                />
+                <div className="pt-4 mb-6">
+                  <Button type="submit">
+                    Log in
+                  </Button>
 
-    <FormField name="password" placeholder="Password" />
+                </div>
+                <div className="flex items-center my-6">
+                  <div className="flex-1 h-px bg-gray-300" />
 
-    <div className="pt-4">
-      <Button type="submit">
-        Log in
-      </Button>
-    </div>
+                  <span className="px-4 text-sm font-semibold text-gray-700">
+                    or login with
+                  </span>
 
-  </div>
-</Form>
-  )}
-</Formik>
+                  <div className="flex-1 h-px bg-gray-300" />
+                </div>
+
+
+
+
+              </div>
+            </Form>
+          )}
+        </Formik>
 
         <SocialAuth />
+
+        <div className="mt-10 text-center text-sm text-gray-700">
+          Don’t have an account?{" "}
+          <Link
+            href="/sign-up"
+            className="text-blue-600 font-bold hover:underline"
+          >
+            Sign up
+          </Link>
+        </div>
 
       </AuthLayout>
 
