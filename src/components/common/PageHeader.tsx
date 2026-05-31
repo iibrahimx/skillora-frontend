@@ -3,7 +3,7 @@ import DateRangePicker from "./DateRangePicker";
 
 interface PageHeaderProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
 }
 
 export default function PageHeader({ title, subtitle }: PageHeaderProps) {
