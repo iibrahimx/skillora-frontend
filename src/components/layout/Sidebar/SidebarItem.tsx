@@ -22,7 +22,7 @@ export default function SidebarItem({
         transition-all duration-200
         ${
           active
-            ? "bg-white text-blue-600 shadow-sm"
+            ? "bg-white text-[#3665CA] shadow-sm"
             : "text-white/80 hover:bg-white/10 hover:text-white"
         }
       `}
