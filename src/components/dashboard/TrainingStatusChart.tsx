@@ -30,7 +30,7 @@ export default function TrainingStatusChart() {
         Training Status Distribution
       </h3>
 
-      <div className="flex h-[300px] items-center gap-6">
+      <div className="flex h-[300px] items-center justify-start gap-4">
         <div className="relative h-[240px] w-[200px] flex-shrink-0">
           <ResponsiveContainer>
             <PieChart>
@@ -54,11 +54,11 @@ export default function TrainingStatusChart() {
           </div>
         </div>
 
-        <div className="min-w-0 flex-1 space-y-4">
+        <div className="min-w-0 space-y-4">
           {data.map((item) => (
             <div
               key={item.name}
-              className="flex flex-row xl:flex-col items-center justify-between gap-4"
+              className="flex flex-row  items-center justify-between gap-4"
             >
               <div className="flex items-center gap-3">
                 <div
