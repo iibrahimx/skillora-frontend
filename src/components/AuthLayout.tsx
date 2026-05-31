@@ -13,10 +13,8 @@ export default function AuthLayout({
 }) {
   return (
     <div className="min-h-screen flex bg-[#F5F5F5]">
-
       {/* LEFT SIDE */}
       <div className="hidden lg:flex lg:w-1/2 relative">
-
         <Image
           src={leftImgSrc}
           alt="auth image"
@@ -29,30 +27,18 @@ export default function AuthLayout({
         <div className="absolute top-10 left-10 text-white">
           <h1 className="text-4xl font-bold">SkillOra</h1>
         </div>
-
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="flex w-full lg:w-1/2 items-center justify-center px-8">
+      <div className="flex w-full lg:w-1/2 justify-center px-8 overflow-y-auto">
+        <div className="w-full max-w-xl py-8">
+          <h1 className="text-center text-5xl font-bold">{title}</h1>
 
-        <div className="w-full max-w-xl">
+          <p className="mt-4 text-center text-gray-500 text-xl">{subtitle}</p>
 
-          <h1 className="text-center text-5xl font-bold">
-            {title}
-          </h1>
-
-          <p className="mt-4 text-center text-gray-500 text-xl">
-            {subtitle}
-          </p>
-
-          <div className="mt-10">
-            {children}
-          </div>
-
+          <div className="mt-10">{children}</div>
         </div>
-
       </div>
-
     </div>
   );
 }

@@ -1,51 +1,56 @@
 "use client";
 
 import AuthLayout from "@/components/AuthLayout";
-import FormField from "@/components/FormField";
-import Button from "@/components/button";
-import SocialAuth from "@/components/SocialAuth";
-import { Formik, Form } from "formik";
+import AuthForm from "@/components/AuthForm";
 import * as Yup from "yup";
 
 const signUpSchema = Yup.object({
   name: Yup.string().required("Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().min(6, "Min 6 characters").required("Password is required"),
+  password: Yup.string()
+    .min(6, "Min 6 characters")
+    .required("Password is required"),
 });
 
 export default function SignUpPage() {
   return (
-    <AuthLayout
-      title="Create account"
-      subtitle="Sign up to get started"
-    >
-      <Formik
+    <AuthLayout title="Create account" subtitle="Sign up to get started">
+      <AuthForm
+        fields={[
+          {
+            name: "name",
+            type: "text",
+            placeholder: "Enter your full name",
+            label: "Full Name",
+          },
+          {
+            name: "email",
+            type: "email",
+            placeholder: "Enter your email",
+            label: "Email Address",
+          },
+          {
+            name: "password",
+            type: "password",
+            placeholder: "Enter your password",
+            label: "Password",
+          },
+        ]}
         initialValues={{ name: "", email: "", password: "" }}
         validationSchema={signUpSchema}
         onSubmit={(values) => {
           console.log(values);
         }}
-      >
-        {() => (
-          <Form>
-            <div className="flex flex-col gap-8">
-
-              <FormField name="name" placeholder="Full Name" />
-              <FormField name="email" placeholder="Email" />
-              <FormField name="password" placeholder="Password" />
-
-              <Button type="submit">
-                Create Account
-              </Button>
-
-            </div>
-          </Form>
-        )}
-      </Formik>
-
-      <div className="my-8" />
-
-      <SocialAuth />
+        buttonText="Create Account"
+        showSocialAuth={true}
+        showDivider={true}
+        dividerText="or sign up with"
+        footerLink={{
+          text: "Already have an account?",
+          href: "/sign-in",
+          linkText: "Log in",
+        }}
+      />
     </AuthLayout>
   );
 }
