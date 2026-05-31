@@ -7,7 +7,7 @@ export default function DashboardScreen() {
     <div className="space-y-8">
       <PageHeader
         title="Dashboard Overview"
-        subtitle="Track training performance and compliance across your workforce"
+        // subtitle="Track training performance and compliance across your workforce"
       />
 
       <DashboardStats />
