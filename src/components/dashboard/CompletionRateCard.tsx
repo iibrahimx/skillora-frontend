@@ -23,13 +23,13 @@ const data = [
 
 export default function CompletionRateChart() {
   return (
-    <div className="h-full min-w-0 overflow-hidden rounded-3xl border border-[#e2e8f0] bg-[#F2F0F0] p-6 shadow-sm">
+    <div className="h-full min-w-0 overflow-hidden rounded-xl border border-[#e2e8f0] bg-[#F2F0F0] p-6 shadow-sm">
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-lg font-bold text-black">
+        <h3 className="text-[15px] font-bold text-black">
           Completion Rate Over Time
         </h3>
 
-        <select className="rounded-md border border-[#cbd5e1] px-3 py-2 text-sm">
+        <select className="text-[15px] font-bold rounded-md border border-[#cbd5e1] px-3 py-2 text-sm">
           <option>Last 7 Days</option>
         </select>
       </div>
@@ -50,12 +50,23 @@ export default function CompletionRateChart() {
               stroke="#e2e8f0"
               strokeDasharray="3 3"
             />
-            <XAxis dataKey="day" />
+            <XAxis
+              dataKey="day"
+              interval={0}
+              tick={{
+                fontSize: 12,
+                fill: "black",
+              }}
+            />
             <YAxis
-              width={50}
+              width={40}
               domain={[0, 100]}
               ticks={[0, 20, 40, 60, 80, 100]}
               tickFormatter={(value) => `${value}%`}
+              tick={{
+                fontSize: 12,
+                fill: "black",
+              }}
             />
             <Tooltip />
             <Bar
@@ -68,7 +79,7 @@ export default function CompletionRateChart() {
                 dataKey="rate"
                 position="top"
                 formatter={(value) => `${value}%`}
-                className="fill-[#334155] text-xs"
+                className="fill-black font-semibold text-xs"
               />
             </Bar>
           </BarChart>
