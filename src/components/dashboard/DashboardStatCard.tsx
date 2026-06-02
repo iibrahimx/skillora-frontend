@@ -25,7 +25,7 @@ export default function DashboardStatCard({
 }: DashboardStatCardProps) {
   return (
     <div
-      className={`flex h-[146px] flex-col rounded-2xl border border-[#e2e8f0] p-5 shadow-sm ${cardBg}`}
+      className={`flex h-[146px] flex-col rounded-xl border border-[#e2e8f0] p-5 shadow-sm ${cardBg}`}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
