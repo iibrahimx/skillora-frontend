@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+@theme {
   --color-primary: #2563eb;
   --color-secondary: #4f46e5;
 
@@ -13,6 +13,6 @@
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
+  background-color: var(--color-background) !important;
+  color: var(--color-text-primary) !important;
 }
