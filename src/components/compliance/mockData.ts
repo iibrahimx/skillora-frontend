@@ -5,6 +5,7 @@ export const complianceMetrics = [
     title: "Compliance Completion Rate",
     value: "86%",
     change: "+6%",
+    percentage: 86,
     icon: ShieldCheck,
     color: "#2CAA36",
     bgColor: "#E8F7EA",

@@ -1,9 +1,11 @@
 import { Info, TrendingUp } from "lucide-react";
+import ProgressRing from "../common/ProgressRing";
 
 interface ComplianceStatCardProps {
   title: string;
   value: string;
   change: string;
+  percentage?: number;
   icon: React.ElementType;
   color: string;
   bgColor: string;
@@ -16,6 +18,7 @@ export default function ComplianceStatCard({
   icon: Icon,
   color,
   bgColor,
+  percentage,
 }: ComplianceStatCardProps) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -32,12 +35,18 @@ export default function ComplianceStatCard({
           </h2>
         </div>
 
-        <div
-          className="flex h-14 w-14 items-center justify-center rounded-full"
-          style={{ backgroundColor: bgColor }}
-        >
-          <Icon size={30} style={{ color }} />
-        </div>
+        {percentage ? (
+          <ProgressRing percentage={percentage} />
+        ) : (
+          <div
+            className="flex h-14 w-14 items-center justify-center rounded-full"
+            style={{
+              backgroundColor: bgColor,
+            }}
+          >
+            <Icon size={30} style={{ color }} />
+          </div>
+        )}
       </div>
       <div className="mt-4 flex items-start gap-1">
         <TrendingUp size={16} style={{ color }} />
