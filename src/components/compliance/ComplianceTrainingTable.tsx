@@ -170,7 +170,9 @@ export default function ComplianceTrainingTable() {
           Showing 1 to {filteredData.length} of 24
         </span>
 
-        <button className="font-medium text-[#2563EB]">View all</button>
+        <button className="font-medium text-[#3665CA] hover:text-[#3665CA]/60 cursor-pointer">
+          View all
+        </button>
       </div>
     </div>
   );

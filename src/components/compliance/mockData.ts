@@ -1,5 +1,6 @@
 import { ShieldCheck, AlertCircle, Users } from "lucide-react";
 
+// ========= Compliance Metrics Mock Data =========
 export const complianceMetrics = [
   {
     title: "Compliance Completion Rate",
@@ -36,6 +37,8 @@ export const complianceMetrics = [
   },
 ];
 
+// ========= Overdue Training Mock Data =========
+
 export const overdueTrainings = [
   {
     id: "1",
@@ -71,5 +74,66 @@ export const overdueTrainings = [
     mandatoryFor: "Finance, HR, IT",
     overdueDays: 1,
     employeesOverdue: 5,
+  },
+];
+
+// ========= Department Compliance Mock Data =========
+
+export const departmentComplianceData = [
+  {
+    department: "Finance",
+    complianceRate: 94,
+    trend: "up",
+    change: 6,
+    color: "#3DDC3D",
+  },
+  {
+    department: "Human Resources",
+    complianceRate: 91,
+    trend: "up",
+    change: 5,
+    color: "#635BFF",
+  },
+  {
+    department: "Information Technology",
+    complianceRate: 88,
+    trend: "up",
+    change: 4,
+    color: "#3B82F6",
+  },
+  {
+    department: "Operations",
+    complianceRate: 82,
+    trend: "up",
+    change: 3,
+    color: "#F59E0B",
+  },
+  {
+    department: "Sales",
+    complianceRate: 79,
+    trend: "down",
+    change: 2,
+    color: "#2DD4BF",
+  },
+  {
+    department: "Marketing",
+    complianceRate: 75,
+    trend: "up",
+    change: 1,
+    color: "#EF4444",
+  },
+  {
+    department: "Customer Services",
+    complianceRate: 73,
+    trend: "neutral",
+    change: 0,
+    color: "#44403C",
+  },
+  {
+    department: "Legal",
+    complianceRate: 68,
+    trend: "down",
+    change: 3,
+    color: "#CBD5E1",
   },
 ];

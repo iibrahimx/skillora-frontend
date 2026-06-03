@@ -14,7 +14,7 @@ export default function ComplianceScreen() {
 
       <ComplianceStats />
 
-      <section className="grid grid-cols-1 gap-6 xl:grid-cols-[1.2fr_1fr]">
+      <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <ComplianceTrainingTable />
         <ComplianceDepartmentStatus />
       </section>
