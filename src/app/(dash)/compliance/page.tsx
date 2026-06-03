@@ -1,5 +1,9 @@
-import ComingSoon from "@/components/common/ComingSoon";
+import ComplianceScreen from "@/components/compliance/ComplianceScreen";
 
-export default function Compliance() {
-  return <ComingSoon title="Compliance Page" />;
+export default function ComplianceMonitoringPage() {
+  return (
+    <div className="w-full flex-1 p-8">
+      <ComplianceScreen />
+    </div>
+  );
 }
