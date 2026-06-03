@@ -1,4 +1,4 @@
-import { ShieldCheck, AlertCircle, Users } from "lucide-react";
+import { FileText, ShieldCheck, AlertCircle, Users } from "lucide-react";
 
 // ========= Compliance Metrics Mock Data =========
 export const complianceMetrics = [
@@ -135,5 +135,55 @@ export const departmentComplianceData = [
     trend: "down",
     change: 3,
     color: "#CBD5E1",
+  },
+];
+
+// ========= Audit Reports Mock Data =========
+
+export const auditReports = [
+  {
+    id: "1",
+    title: "Compliance Overview Report",
+    description:
+      "Summary of overall compliance status across the organization.",
+    icon: FileText,
+    iconColor: "#F59E0B",
+    iconBgColor: "#FEF3C7",
+  },
+
+  {
+    id: "2",
+    title: "Mandatory Training Report",
+    description: "Details of mandatory training and completion status.",
+    icon: FileText,
+    iconColor: "#3665CA",
+    iconBgColor: "#EEF4FF",
+  },
+
+  {
+    id: "3",
+    title: "Overdue Trainings Report",
+    description: "List of overdue trainings by employee and department.",
+    icon: FileText,
+    iconColor: "#F90505",
+    iconBgColor: "#FFDBDB",
+  },
+
+  {
+    id: "4",
+    title: "Department Compliance Report",
+    description: "Compliance status breakdown by department.",
+    icon: FileText,
+    iconColor: "#3665CA",
+    iconBgColor: "#EEF4FF",
+  },
+
+  {
+    id: "5",
+    title: "Audit Readiness Report",
+    description: "Summary of audit readiness and risk area.",
+    icon: ShieldCheck,
+    iconColor: "#F59E0B",
+    iconBgColor: "#FEF3C7",
   },
 ];
