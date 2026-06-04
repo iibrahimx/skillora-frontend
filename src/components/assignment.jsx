@@ -29,7 +29,7 @@ export function AssignmentManagement() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-6 items-start w-full">
         <div className="lg:col-span-8 space-y-6">
           <div className="border border-gray-300 rounded-lg p-4">
-            <div className="flex gap-3 mb-3">
+            <div className="flex gap-3 mb-3 items-center">
               <img
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780210149/Users_vdzepd.svg"
                 alt="icon"
@@ -396,26 +396,22 @@ export function AssignmentManagement() {
 
             <div className="border-b border-gray-400 -mx-4 my-2"></div>
             <div className="flex flex-col items-center gap-2">
-              <button className="w-full bg-[#4f46e5] text-white text-sm rounded-md flex items-center justify-center gap-2 px-2 py-1">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                  ></path>
-                </svg>
+              <button className="w-full bg-[#4f46e5] text-white text-sm rounded-md hover:opacity-70 cursor-pointer flex items-center justify-center gap-2 px-2 py-1">
+                <img
+                  src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780555335/Users_1_pzchmx.svg"
+                  alt="icon"
+                  className="w-5 h-5"
+                ></img>
                 Assign Training
               </button>
               <div>
                 <span className="flex">
-                  <img src="" alt="lock icon" className="w-3 h-3"></img>
-                  <p className="text-[8px]">
+                  <img
+                    src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780555335/Lock_uirmvl.svg"
+                    alt="lock icon"
+                    className="w-3 h-3"
+                  ></img>
+                  <p className="text-[8px] text-gray-600">
                     Assignment will be sent to selected learners.
                   </p>
                 </span>
