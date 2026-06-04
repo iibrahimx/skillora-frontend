@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 export function AssignmentManagement() {
   return (
@@ -30,11 +31,13 @@ export function AssignmentManagement() {
         <div className="lg:col-span-8 space-y-6">
           <div className="border border-gray-300 rounded-lg p-4">
             <div className="flex gap-3 mb-3 items-center">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780210149/Users_vdzepd.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
-              ></img>
+              />
               <div>
                 <h3 className="text-sm font-bold">1. Assign by Department</h3>
                 <p className="text-xs text-gray-700">
@@ -94,11 +97,13 @@ export function AssignmentManagement() {
 
           <div className="border border-gray-400 rounded-lg p-4">
             <div className="flex gap-2 mb-2">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780242417/Briefcase_igrkui.svg"
                 alt="briefcase icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
-              ></img>
+              />
               <div>
                 <h3 className="text-sm font-bold">2. Assign by Role</h3>
                 <p className="text-xs text-gray-700">
@@ -151,11 +156,13 @@ export function AssignmentManagement() {
 
           <div className="border border-gray-300 rounded-lg p-4">
             <div className="flex gap-3 mb-3">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780243275/Group_rg0oc6.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
-              ></img>
+              />
               <div>
                 <h3 className="text-sm font-bold">3. Deadline & Reminders</h3>
                 <p className="text-xs text-gray-700">
@@ -169,11 +176,13 @@ export function AssignmentManagement() {
                 <div className="flex items-center justify-between border border-gray-400 rounded-md px-3 py-2 text-xs">
                   <span className="flex items-center gap-2">
                     <span>
-                      <img
+                      <Image
                         src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780444770/Vector_1_dtj9zp.svg"
                         alt="time icon"
+                        width={20}
+                        height={20}
                         className="w-5 h-5"
-                      ></img>
+                      />
                     </span>{" "}
                     11:59 PM
                   </span>
@@ -198,11 +207,13 @@ export function AssignmentManagement() {
                 <div className="flex items-center justify-between border border-gray-400 rounded-md px-3 py-2 text-xs">
                   <span className="flex items-center gap-2">
                     <span>
-                      <img
+                      <Image
                         src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780444820/Vector_1_1_ihoedf.svg"
                         alt="calender icon"
+                        width={20}
+                        height={20}
                         className="w-5 h-5"
-                      ></img>
+                      />
                     </span>
                     May 28, 2026
                   </span>
@@ -217,11 +228,13 @@ export function AssignmentManagement() {
 
           <div className="border border-gray-400 rounded-lg p-4 flex items-center gap-4 justify-between">
             <div className="flex gap-3 items-start">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780244220/Shield_x3qo54.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
-              ></img>
+              />
               <div>
                 <h3 className="text-sm font-bold">4. Mandatory Training</h3>
                 <p className="text-xs text-gray-700">
@@ -244,11 +257,13 @@ export function AssignmentManagement() {
                 <span className="text-sm font-semibold">Mandatory</span>
               </label>
               <button className="flex items-center gap-1 border border-gray-400 rounded-md px-2 py-1 text-xs">
-                <img
+                <Image
                   src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780445061/Check_circle_cqw4qg.svg"
                   alt="checkbox icon"
+                  width={16}
+                  height={16}
                   className="w-4 h-4"
-                ></img>
+                />
                 <span className="text-sm">Completion is required</span>
               </button>
             </div>
@@ -258,10 +273,12 @@ export function AssignmentManagement() {
         <div className="lg:col-span-4 border border-gray-300 rounded-xl p-4">
           <div className="flex gap-3 mb-10 items-center">
             <div className="w-8 h-8">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780244968/SVGRepo_iconCarrier_nppmws.svg"
                 alt="icon"
-              ></img>
+                width={32}
+                height={32}
+              />
             </div>
             <div>
               <h3 className="text-sm font-bold">Assignment Summary</h3>
@@ -278,11 +295,13 @@ export function AssignmentManagement() {
           <div className="space-y-5">
             <div className="flex justify-between w-full items-center">
               <div className="flex gap-2 items-center">
-                <img
+                <Image
                   src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780300631/Icon_bf8w08.svg"
                   alt="icon"
+                  width={24}
+                  height={24}
                   className="w-6 h-6"
-                ></img>
+                />
                 <span className="text-xs font-semibold">Departments</span>
               </div>
               <span className="text-xs px-2 py-1 rounded-full bg-[#d8d6f9]">
@@ -310,11 +329,13 @@ export function AssignmentManagement() {
             <div className="space-y-3">
               <div className="flex justify-between items-center w-full">
                 <div className="flex gap-2 items-center">
-                  <img
+                  <Image
                     src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780470755/Icon_1_rdkvjo.svg"
                     alt="icon"
+                    width={16}
+                    height={16}
                     className="w-6 h-6"
-                  ></img>
+                  />
                   <span className="text-xs font-semibold">Roles</span>
                 </div>
                 <span className="text-xs px-2 py-1 rounded-full bg-[#e8eeff]">
@@ -342,11 +363,13 @@ export function AssignmentManagement() {
 
             <div className="space-y-3">
               <div className="flex gap-2 items-center">
-                <img
+                <Image
                   src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780470812/Calendar_lxhbr6.svg"
                   alt="calender icon"
+                  width={16}
+                  height={16}
                   className="w-6 h-6"
-                ></img>
+                />
                 <span className="text-xs font-semibold">Due Date & Time</span>
               </div>
 
@@ -367,11 +390,13 @@ export function AssignmentManagement() {
 
             <div className=" flex items-center justify-between gap-2">
               <div className="flex gap-2 items-start">
-                <img
+                <Image
                   src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780470871/Icon_2_fh3edo.svg"
                   alt="icon"
+                  width={16}
+                  height={16}
                   className="w-6 h-6"
-                ></img>
+                />
                 <div>
                   <h3 className="text-xs font-semibold whitespace-nowrap">
                     Mandatory Training
@@ -380,11 +405,13 @@ export function AssignmentManagement() {
               </div>
 
               <div className="flex flex-col items-end flex-shrink-0 pr-3 gap-3">
-                <img
+                <Image
                   src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780477448/Group_196_1_vj2ebh.svg"
                   alt="check yes icon"
+                  width={68}
+                  height={24}
                   className="w-[68px] h-6 object-contain"
-                ></img>
+                />
 
                 <div className="items-center flex text-right pr-1">
                   <span className="text-[10px] text-gray-600 whitespace-nowrap">
@@ -397,20 +424,24 @@ export function AssignmentManagement() {
             <div className="border-b border-gray-400 -mx-4 my-2"></div>
             <div className="flex flex-col items-center gap-2">
               <button className="w-full bg-[#4f46e5] text-white text-sm rounded-md hover:opacity-70 cursor-pointer flex items-center justify-center gap-2 px-2 py-1">
-                <img
+                <Image
                   src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780555335/Users_1_pzchmx.svg"
                   alt="icon"
+                  width={20}
+                  height={20}
                   className="w-5 h-5"
-                ></img>
+                />
                 Assign Training
               </button>
               <div>
                 <span className="flex">
-                  <img
+                  <Image
                     src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780555335/Lock_uirmvl.svg"
                     alt="lock icon"
+                    width={12}
+                    height={12}
                     className="w-3 h-3"
-                  ></img>
+                  />
                   <p className="text-[8px] text-gray-600">
                     Assignment will be sent to selected learners.
                   </p>
