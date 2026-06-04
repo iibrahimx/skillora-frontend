@@ -8,7 +8,7 @@ export default function SidebarFooter() {
   const pathname = usePathname();
 
   return (
-    <div className="border-t border-white/10 pt-4">
+    <div className="border-t border-white/10 pt-4 pb-2 mt-2 xl:mt-8">
       <div className="flex flex-col gap-2">
         {footerItems.map((item) => (
           <SidebarItem
