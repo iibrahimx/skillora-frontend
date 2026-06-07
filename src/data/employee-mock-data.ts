@@ -11,6 +11,10 @@ import {
   Headphones,
   BadgeDollarSign,
   UserCog,
+  Shield,
+  Code2,
+  PieChart,
+  BarChart3,
 } from "lucide-react";
 
 // ========= Employee Metrics Mock Data =========
@@ -135,27 +139,32 @@ export const trainingHistory = [
     title: "Security Awareness",
     date: "May 10, 2024",
     completionRate: 94,
+    icon: Shield,
+    color: "#22C55E",
   },
-
   {
     id: "2",
     title: "Code of Conduct",
     date: "May 10, 2024",
     completionRate: 91,
+    icon: Code2,
+    color: "#0404FF",
   },
-
   {
     id: "3",
     title: "Data Privacy",
     date: "May 10, 2024",
     completionRate: 87,
+    icon: PieChart,
+    color: "#0404FF",
   },
-
   {
     id: "4",
     title: "Leadership Essentials",
     date: "May 10, 2024",
     completionRate: 80,
+    icon: BarChart3,
+    color: "#F59E0B",
   },
 ];
 

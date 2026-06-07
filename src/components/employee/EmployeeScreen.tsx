@@ -1,6 +1,9 @@
 import PageHeader from "@/components/common/PageHeader";
 import EmployeeStats from "./EmployeeStats";
 import DepartmentCard from "./DepartmentCard";
+import OnboardingStatusCard from "./OnboardingStatusCard";
+import RoleManagementCard from "./RoleManagementCard";
+import TrainingHistoryCard from "./TrainingHistoryCard";
 
 export default function EmployeeScreen() {
   return (
@@ -15,7 +18,12 @@ export default function EmployeeScreen() {
           <EmployeeStats />
         </div>
 
-        <DepartmentCard />
+        <div className="space-y-4">
+          <DepartmentCard />
+          <OnboardingStatusCard />
+          <TrainingHistoryCard />
+          <RoleManagementCard />
+        </div>
       </section>
     </div>
   );

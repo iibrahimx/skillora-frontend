@@ -33,7 +33,7 @@ export default function DepartmentCard() {
                 </span>
               </div>
 
-              <span className="text-sm text-black">{department.employees}</span>
+              <span className="text-xs text-black">{department.employees}</span>
             </div>
           );
         })}
