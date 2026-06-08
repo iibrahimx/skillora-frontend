@@ -4,6 +4,7 @@ import DepartmentCard from "./DepartmentCard";
 import OnboardingStatusCard from "./OnboardingStatusCard";
 import RoleManagementCard from "./RoleManagementCard";
 import TrainingHistoryCard from "./TrainingHistoryCard";
+import EmployeeTable from "./EmployeeTable";
 
 export default function EmployeeScreen() {
   return (
@@ -13,9 +14,12 @@ export default function EmployeeScreen() {
         subtitle="Manage your organization's most valuable asset - your people."
       />
 
-      <section className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_220px]">
-        <div>
+      <section className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_220px] items-start">
+        <div className="flex flex-col gap-4">
           <EmployeeStats />
+          <div className="flex-1">
+            <EmployeeTable />
+          </div>
         </div>
 
         <div className="space-y-4">

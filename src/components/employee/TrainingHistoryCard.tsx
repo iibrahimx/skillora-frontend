@@ -2,7 +2,7 @@ import { trainingHistory } from "@/data/employee-mock-data";
 
 export default function TrainingHistoryCard() {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-sm">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-bold text-black">Training History</h3>
 

@@ -14,6 +14,8 @@ export interface Employee {
   name: string;
   email: string;
   avatar: string;
+  departmentColor: string;
+  departmentIcon: LucideIcon;
   department: string;
   role: string;
   onboardingStatus: "Completed" | "In Progress" | "Not Started";
