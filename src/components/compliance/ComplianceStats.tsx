@@ -1,5 +1,5 @@
+import { complianceMetrics } from "@/data/compliance-mock-data";
 import ComplianceStatCard from "./ComplianceStatCard";
-import { complianceMetrics } from "./mockData";
 
 export default function ComplianceStats() {
   return (

@@ -24,10 +24,10 @@ export default function Sidebar() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex min-h-screen w-72 flex-col bg-gradient-to-b from-blue-600 to-indigo-700 px-4">
+      <aside className="hidden lg:flex h-screen w-72 flex-col bg-gradient-to-b from-blue-600 to-indigo-700 px-4 shrink-0">
         <SidebarHeader />
 
-        <div className="flex flex-1 flex-col">
+        <div className="flex h-full flex-col">
           <SidebarNav />
 
           <div className="mt-auto">
