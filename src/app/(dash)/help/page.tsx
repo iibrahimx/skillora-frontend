@@ -1,5 +1,5 @@
-import ComingSoon from "@/components/common/ComingSoon";
+import { HelpCenter } from "@/components/help";
 
 export default function Help() {
-  return <ComingSoon title="Help Center" />;
+  return <HelpCenter />;
 }
