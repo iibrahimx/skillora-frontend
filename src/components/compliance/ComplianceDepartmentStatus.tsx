@@ -15,7 +15,7 @@ import {
   Info,
 } from "lucide-react";
 
-import { departmentComplianceData } from "./mockData";
+import { departmentComplianceData } from "@/data/compliance-mock-data";
 
 const icons = {
   Finance: Building2,
