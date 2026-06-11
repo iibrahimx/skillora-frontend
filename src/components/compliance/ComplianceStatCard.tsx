@@ -7,7 +7,7 @@ interface ComplianceStatCardProps {
   value: string;
   change: string;
   percentage?: number;
-  icon: string;
+  icon?: string;
   color: string;
   bgColor: string;
 }
@@ -45,7 +45,7 @@ export default function ComplianceStatCard({
               backgroundColor: bgColor,
             }}
           >
-            <Image src={icon} alt={title} width={30} height={30} />
+            {icon && <Image src={icon} alt={title} width={30} height={30} />}
           </div>
         )}
       </div>
