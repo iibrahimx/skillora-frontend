@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Search,
-  Heart,
-  ShoppingCart,
-  Bell,
-  Menu,
-  ArrowLeft,
-} from "lucide-react";
+import { Search, Heart, ShoppingCart, Bell, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default function SettingsNavbar() {
