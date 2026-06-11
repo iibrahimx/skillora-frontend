@@ -1,11 +1,12 @@
-import { Info, TrendingUp, TrendingDown, LucideIcon } from "lucide-react";
+import { Info, TrendingUp, TrendingDown } from "lucide-react";
+import Image from "next/image";
 
 interface DashboardStatCardProps {
   title: string;
   value: string;
   change: string;
   trend: "up" | "down";
-  icon: LucideIcon;
+  icon: string;
   cardBg: string;
   titleColor: string;
   iconBg: string;
@@ -17,7 +18,7 @@ export default function DashboardStatCard({
   value,
   change,
   trend,
-  icon: Icon,
+  icon,
   cardBg,
   titleColor,
   iconBg,
@@ -39,7 +40,13 @@ export default function DashboardStatCard({
         <div
           className={`flex h-14 w-14 items-center justify-center rounded-full ${iconBg}`}
         >
-          <Icon size={30} className={iconColor} />
+          <Image
+            src={icon}
+            alt={title}
+            width={30}
+            height={30}
+            className={iconColor}
+          />
         </div>
 
         <h2 className="text-[35px] font-bold leading-none text-[#0f172a]">

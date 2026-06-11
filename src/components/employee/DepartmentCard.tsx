@@ -1,4 +1,5 @@
 import { departmentSummary } from "@/data/employee-mock-data";
+import Image from "next/image";
 
 export default function DepartmentCard() {
   return (
@@ -13,7 +14,7 @@ export default function DepartmentCard() {
 
       <div className="space-y-3">
         {departmentSummary.map((department) => {
-          const Icon = department.icon;
+          // const Icon = department.icon;
 
           return (
             <div
@@ -21,11 +22,17 @@ export default function DepartmentCard() {
               className="flex items-center justify-between"
             >
               <div className="flex items-center gap-2">
-                <Icon
+                {/* <Icon
                   size={13}
                   style={{
                     color: department.color,
                   }}
+                /> */}
+                <Image
+                  src={department.icon}
+                  alt={department.department}
+                  width={13}
+                  height={13}
                 />
 
                 <span className="text-xs text-black">
