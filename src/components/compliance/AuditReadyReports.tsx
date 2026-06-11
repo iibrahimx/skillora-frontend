@@ -31,7 +31,6 @@ export default function AuditReadyReports() {
             title={report.title}
             description={report.description}
             icon={report.icon}
-            iconColor={report.iconColor}
             iconBgColor={report.iconBgColor}
           />
         ))}
