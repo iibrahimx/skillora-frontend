@@ -1,5 +1,3 @@
-import { ShieldCheck } from "lucide-react";
-
 // ========= Compliance Metrics Mock Data =========
 export const complianceMetrics = [
   {
@@ -7,7 +5,6 @@ export const complianceMetrics = [
     value: "86%",
     change: "+6%",
     percentage: 86,
-    icon: ShieldCheck,
     color: "#2CAA36",
     bgColor: "#E8F7EA",
   },
