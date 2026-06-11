@@ -13,7 +13,7 @@ import { FaArrowTrendUp } from "react-icons/fa6";
 
 export default function Sidebar() {
   return (
-    <div className="w-64 bg-blue-700 text-white flex flex-col">
+    <div className="w-64 bg-blue-600 text-white flex flex-col">
       <div className="p-6 text-3xl font-bold">
         SkillOra
       </div>
