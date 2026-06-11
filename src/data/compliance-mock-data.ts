@@ -1,4 +1,4 @@
-import { FileText, ShieldCheck, AlertCircle, Users } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 // ========= Compliance Metrics Mock Data =========
 export const complianceMetrics = [
@@ -15,7 +15,7 @@ export const complianceMetrics = [
     title: "Overdue Mandatory Trainings",
     value: "24",
     change: "+8",
-    icon: AlertCircle,
+    icon: "/icons/overdue-mandatory-training.svg",
     color: "#EF4444",
     bgColor: "#FEECEC",
   },
@@ -23,7 +23,7 @@ export const complianceMetrics = [
     title: "Employees at Risk",
     value: "63",
     change: "+12",
-    icon: Users,
+    icon: "/icons/employees-at-risk.svg",
     color: "#F59E0B",
     bgColor: "#FFF6E5",
   },
@@ -31,7 +31,7 @@ export const complianceMetrics = [
     title: "Audit Readiness",
     value: "92%",
     change: "+5%",
-    icon: ShieldCheck,
+    icon: "/icons/audit-readiness.svg",
     color: "#2563EB",
     bgColor: "#EEF4FF",
   },
@@ -85,21 +85,21 @@ export const departmentComplianceData = [
     complianceRate: 94,
     trend: "up",
     change: 6,
-    color: "#3DDC3D",
+    color: "#34ED34",
   },
   {
     department: "Human Resources",
     complianceRate: 91,
     trend: "up",
     change: 5,
-    color: "#635BFF",
+    color: "#5B4FD1",
   },
   {
     department: "Information Technology",
     complianceRate: 88,
     trend: "up",
     change: 4,
-    color: "#3B82F6",
+    color: "#2E99FD",
   },
   {
     department: "Operations",
@@ -113,28 +113,28 @@ export const departmentComplianceData = [
     complianceRate: 79,
     trend: "down",
     change: 2,
-    color: "#2DD4BF",
+    color: "#34EDE3",
   },
   {
     department: "Marketing",
     complianceRate: 75,
     trend: "up",
     change: 1,
-    color: "#EF4444",
+    color: "#FF0000",
   },
   {
     department: "Customer Services",
     complianceRate: 73,
     trend: "neutral",
     change: 0,
-    color: "#44403C",
+    color: "#36361D",
   },
   {
     department: "Legal",
     complianceRate: 68,
     trend: "down",
     change: 3,
-    color: "#CBD5E1",
+    color: "#C2D7F4",
   },
 ];
 
@@ -146,8 +146,7 @@ export const auditReports = [
     title: "Compliance Overview Report",
     description:
       "Summary of overall compliance status across the organization.",
-    icon: FileText,
-    iconColor: "#F59E0B",
+    icon: "/icons/compliance-overview-report.svg",
     iconBgColor: "#FEF3C7",
   },
 
@@ -155,8 +154,7 @@ export const auditReports = [
     id: "2",
     title: "Mandatory Training Report",
     description: "Details of mandatory training and completion status.",
-    icon: FileText,
-    iconColor: "#3665CA",
+    icon: "/icons/mandatory-training-report.svg",
     iconBgColor: "#EEF4FF",
   },
 
@@ -164,8 +162,7 @@ export const auditReports = [
     id: "3",
     title: "Overdue Trainings Report",
     description: "List of overdue trainings by employee and department.",
-    icon: FileText,
-    iconColor: "#F90505",
+    icon: "/icons/overdue-training-report.svg",
     iconBgColor: "#FFDBDB",
   },
 
@@ -173,8 +170,7 @@ export const auditReports = [
     id: "4",
     title: "Department Compliance Report",
     description: "Compliance status breakdown by department.",
-    icon: FileText,
-    iconColor: "#3665CA",
+    icon: "/icons/department-compliance-report.svg",
     iconBgColor: "#EEF4FF",
   },
 
@@ -182,8 +178,7 @@ export const auditReports = [
     id: "5",
     title: "Audit Readiness Report",
     description: "Summary of audit readiness and risk area.",
-    icon: ShieldCheck,
-    iconColor: "#F59E0B",
+    icon: "/icons/audit-readiness-report.svg",
     iconBgColor: "#FEF3C7",
   },
 ];

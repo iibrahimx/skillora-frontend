@@ -1,12 +1,13 @@
 import { Info, TrendingUp } from "lucide-react";
 import ProgressRing from "../common/ProgressRing";
+import Image from "next/image";
 
 interface ComplianceStatCardProps {
   title: string;
   value: string;
   change: string;
   percentage?: number;
-  icon: React.ElementType;
+  icon: string;
   color: string;
   bgColor: string;
 }
@@ -15,14 +16,14 @@ export default function ComplianceStatCard({
   title,
   value,
   change,
-  icon: Icon,
+  icon,
   color,
   bgColor,
   percentage,
 }: ComplianceStatCardProps) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="mb-4 flex items-start justify-between">
+    <div className="rounded-2xl flex flex-col justify-between border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="mb-4 flex items-start gap-2">
         <p className="text-sm font-medium text-black">{title}</p>
 
         <Info size={19} className="text-slate-400" />
@@ -44,10 +45,11 @@ export default function ComplianceStatCard({
               backgroundColor: bgColor,
             }}
           >
-            <Icon size={30} style={{ color }} />
+            <Image src={icon} alt={title} width={30} height={30} />
           </div>
         )}
       </div>
+
       <div className="mt-4 flex items-start gap-1">
         <TrendingUp size={16} style={{ color }} />
 

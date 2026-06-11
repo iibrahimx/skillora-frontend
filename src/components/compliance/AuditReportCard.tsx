@@ -1,35 +1,29 @@
 import { Download } from "lucide-react";
+import Image from "next/image";
 
 interface AuditReportCardProps {
   title: string;
   description: string;
-  icon: React.ElementType;
-  iconColor: string;
+  icon: string;
   iconBgColor: string;
 }
 
 export default function AuditReportCard({
   title,
   description,
-  icon: Icon,
-  iconColor,
+  icon,
   iconBgColor,
 }: AuditReportCardProps) {
   return (
     <div className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-md">
       {/* Icon */}
       <div
-        className="mb-4 flex h-8 w-8 items-center justify-center rounded-md"
+        className="mb-4 flex h-8 w-8 items-center justify-center"
         style={{
           backgroundColor: iconBgColor,
         }}
       >
-        <Icon
-          size={28}
-          style={{
-            color: iconColor,
-          }}
-        />
+        <Image src={icon} alt={title} width={28} height={28} />
       </div>
 
       {/* Content */}
