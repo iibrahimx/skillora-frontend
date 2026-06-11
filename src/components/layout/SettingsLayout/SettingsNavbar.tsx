@@ -1,12 +1,26 @@
 "use client";
 
-import { Search, Heart, ShoppingCart, Bell, Menu } from "lucide-react";
+import {
+  Search,
+  Heart,
+  ShoppingCart,
+  Bell,
+  Menu,
+  ArrowLeft,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function SettingsNavbar() {
   return (
     <header className="h-[70px] bg-white border-b border-gray-300 flex items-center justify-between px-5">
       <div className="flex items-center gap-4">
-        <Menu className="w-6 h-6 cursor-pointer" />
+        <Link
+          href="/dashboard"
+          className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          <span className="text-sm font-medium">Back to Dashboard</span>
+        </Link>
       </div>
 
       <div className="w-[350px] h-10 border border-gray-300 rounded-full flex items-center px-4 gap-2">
