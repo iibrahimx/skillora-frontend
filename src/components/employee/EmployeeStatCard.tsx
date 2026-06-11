@@ -1,8 +1,9 @@
+import Image from "next/image";
 interface EmployeeStatCardProps {
   title: string;
   value: string;
   subtitle: string;
-  icon: React.ElementType;
+  icon: string;
   color: string;
   bgColor: string;
 }
@@ -11,8 +12,8 @@ export default function EmployeeStatCard({
   title,
   value,
   subtitle,
-  icon: Icon,
-  color,
+  icon,
+  // color,
   bgColor,
 }: EmployeeStatCardProps) {
   return (
@@ -24,12 +25,7 @@ export default function EmployeeStatCard({
             backgroundColor: bgColor,
           }}
         >
-          <Icon
-            size={17}
-            style={{
-              color,
-            }}
-          />
+          <Image src={icon} alt={title} width={17} height={17} />
         </div>
         <div className="flex flex-col items-start">
           <p className="text-xs font-medium text-black">{title}</p>

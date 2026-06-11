@@ -1,7 +1,5 @@
 import DashboardStatCard from "./DashboardStatCard";
 
-import { CheckCircle2, Users, TriangleAlert, ShieldCheck } from "lucide-react";
-
 export default function DashboardStats() {
   return (
     <section className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -10,7 +8,7 @@ export default function DashboardStats() {
         value="70%"
         change="+7%"
         trend="up"
-        icon={CheckCircle2}
+        icon="/icons/completion-rate.svg"
         cardBg="bg-[#EEF4FF]"
         titleColor="text-[#3665CA]"
         iconBg="bg-#DBEAFE"
@@ -22,7 +20,7 @@ export default function DashboardStats() {
         value="1,543"
         change="+135%"
         trend="up"
-        icon={Users}
+        icon="/icons/active-learners.svg"
         cardBg="bg-[#F4FBF6]"
         titleColor="text-[#34A853]"
         iconBg="bg-green-100"
@@ -34,7 +32,7 @@ export default function DashboardStats() {
         value="32"
         change="-10%"
         trend="down"
-        icon={TriangleAlert}
+        icon="/icons/overdue-trainings.svg"
         cardBg="bg-[#FBF7F2]"
         titleColor="text-[#A67C52]"
         iconBg="bg-orange-100"
@@ -46,7 +44,7 @@ export default function DashboardStats() {
         value="84%"
         change="+6%"
         trend="up"
-        icon={ShieldCheck}
+        icon="/icons/compliance-percentage.svg"
         cardBg="bg-[#F7F3FF]"
         titleColor="text-[#7B61B3]"
         iconBg="bg-purple-100"
