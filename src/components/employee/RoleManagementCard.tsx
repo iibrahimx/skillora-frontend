@@ -20,9 +20,9 @@ export default function RoleManagementCard({ users }: RoleManagementCardProps) {
   }));
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white shadow-sm py-2">
       <div className="flex items-center justify-between px-3 py-2">
-        <h3 className="text-sm font-semibold text-black">Role Management</h3>
+        <h3 className="text-sm font-semibold text-black">Team Distribution</h3>
 
         <button className="text-xs font-medium text-[#0404FF] cursor-pointer">
           View all
@@ -47,27 +47,33 @@ export default function RoleManagementCard({ users }: RoleManagementCardProps) {
         </thead>
 
         <tbody>
-          {roles.map((role) => (
-            <tr key={role.role} className="border-t border-black">
-              <td className="px-2 py-1 text-[10px] text-black">{role.role}</td>
+          {roles.map((role) => {
+            const formattedRole =
+              role.role === "admin" ? "Administrator" : "Employee";
+            return (
+              <tr key={role.role} className="border-t border-black">
+                <td className="px-2 py-1 text-[10px] text-black">
+                  {formattedRole}
+                </td>
 
-              <td className="px-6 py-1 text-[10px] text-black">
-                {role.employees}
-              </td>
+                <td className="px-6 py-1 text-[10px] text-black">
+                  {role.employees}
+                </td>
 
-              <td className="px-2 py-1">
-                <span className="rounded bg-[#32B942]/30 px-2 py-1 text-[10px] text-[#33AE1A]">
-                  {role.status}
-                </span>
-              </td>
-            </tr>
-          ))}
+                <td className="px-2 py-1">
+                  <span className="rounded bg-[#32B942]/30 px-2 py-1 text-[10px] text-[#33AE1A]">
+                    {role.status}
+                  </span>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
 
-      <button className="px-4 py-2 text-xs font-medium text-[#0404FF] cursor-pointer">
+      {/* <button className="px-4 py-2 text-xs font-medium text-[#0404FF] cursor-pointer">
         + Add New Role
-      </button>
+      </button> */}
     </div>
   );
 }
