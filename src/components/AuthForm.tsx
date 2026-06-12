@@ -23,6 +23,7 @@ type AuthFormProps = {
   showSocialAuth?: boolean;
   showDivider?: boolean;
   dividerText?: string;
+  isLoading?: boolean;
   footerLink?: {
     text: string;
     href: string;
@@ -36,6 +37,7 @@ export default function AuthForm({
   validationSchema,
   onSubmit,
   buttonText,
+  isLoading = false,
   showSocialAuth = false,
   showDivider = false,
   dividerText = "or login with",
@@ -65,8 +67,8 @@ export default function AuthForm({
               </div>
             ))}
 
-            <Button type="submit" className="mt-2 cursor-pointer">
-              {buttonText}
+            <Button type="submit" className="mt-2" disabled={isLoading}>
+              {isLoading ? "Logging in..." : buttonText}
             </Button>
 
             {showDivider && (

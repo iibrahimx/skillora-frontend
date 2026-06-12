@@ -15,7 +15,7 @@ export default function SignInPage() {
     <AuthLayout
       title="Welcome back"
       subtitle="Login to your account"
-      leftImgSrc="/IMAGES/auth/sign-in.png"
+      leftImgSrc="/images/auth/sign-in.png"
     >
       <AuthForm
         fields={[
@@ -32,6 +32,7 @@ export default function SignInPage() {
             label: "Password",
           },
         ]}
+        isLoading={isPending}
         initialValues={{ email: "", password: "" }}
         validationSchema={signInSchema}
         onSubmit={async (values) => {
@@ -51,7 +52,7 @@ export default function SignInPage() {
             console.error(error);
           }
         }}
-        buttonText="Log in"
+        buttonText="Log in to Dashboard"
         showSocialAuth={true}
         showDivider={true}
         dividerText="or login with"

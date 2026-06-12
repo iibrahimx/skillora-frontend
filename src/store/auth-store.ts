@@ -5,6 +5,7 @@ import { User } from "@/types/user";
 interface AuthState {
   token: string | null;
   user: User | null;
+
   setAuth: (token: string, user: User) => void;
   logout: () => void;
 }
