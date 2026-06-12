@@ -37,7 +37,10 @@ export default function EmployeeScreen() {
             modules={modulesData?.data ?? []}
           />
           <div className="flex-1">
-            <EmployeeTable />
+            <EmployeeTable
+              users={data?.users ?? []}
+              departments={departmentsData?.data ?? []}
+            />
           </div>
         </div>
 
