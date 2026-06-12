@@ -1,6 +1,24 @@
-import { roleSummary } from "@/data/employee-mock-data";
+import { User } from "@/types/user";
 
-export default function RoleManagementCard() {
+interface RoleManagementCardProps {
+  users: User[];
+}
+
+export default function RoleManagementCard({ users }: RoleManagementCardProps) {
+  const roleCounts = users.reduce(
+    (acc, user) => {
+      acc[user.role] = (acc[user.role] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+
+  const roles = Object.entries(roleCounts).map(([role, count]) => ({
+    role,
+    employees: count,
+    status: "Active",
+  }));
+
   return (
     <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
       <div className="flex items-center justify-between px-3 py-2">
@@ -29,7 +47,7 @@ export default function RoleManagementCard() {
         </thead>
 
         <tbody>
-          {roleSummary.map((role) => (
+          {roles.map((role) => (
             <tr key={role.role} className="border-t border-black">
               <td className="px-2 py-1 text-[10px] text-black">{role.role}</td>
 
