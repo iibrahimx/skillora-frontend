@@ -7,8 +7,14 @@ import OnboardingStatusCard from "./OnboardingStatusCard";
 import RoleManagementCard from "./RoleManagementCard";
 import TrainingHistoryCard from "./TrainingHistoryCard";
 import EmployeeTable from "./EmployeeTable";
+import { useUsers } from "@/hooks/useUsers";
 
 export default function EmployeeScreen() {
+  const { data, isLoading, error } = useUsers();
+  if (data) {
+    console.log(data.users);
+  }
+
   return (
     <div className="space-y-8">
       <PageHeader
