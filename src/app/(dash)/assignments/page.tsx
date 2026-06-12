@@ -1,5 +1,5 @@
-import ComingSoon from "@/components/common/ComingSoon";
+import { AssignmentManagement } from "@/components/assignment";
 
 export default function Assignments() {
-  return <ComingSoon title="Assignments Page" />;
+  return <AssignmentManagement />;
 }

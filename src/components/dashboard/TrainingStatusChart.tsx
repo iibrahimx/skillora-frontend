@@ -25,8 +25,8 @@ const data = [
 
 export default function TrainingStatusChart() {
   return (
-    <div className="h-full min-w-0 overflow-hidden rounded-3xl border border-[#e2e8f0] bg-[#F2F0F0] p-6 shadow-sm">
-      <h3 className="mb-2 text-lg font-bold text-black">
+    <div className="h-full min-w-0 overflow-hidden rounded-xl border border-[#e2e8f0] bg-[#F2F0F0] p-6 shadow-sm">
+      <h3 className="mb-2 text-[15px] font-bold text-black">
         Training Status Distribution
       </h3>
 
@@ -48,9 +48,9 @@ export default function TrainingStatusChart() {
           </ResponsiveContainer>
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-sm text-[#64748b]">Total Trainings</span>
+            <span className="text-[15px] text-black">Total Trainings</span>
 
-            <span className="text-5xl font-bold">420</span>
+            <span className="text-[32px] font-bold">420</span>
           </div>
         </div>
 

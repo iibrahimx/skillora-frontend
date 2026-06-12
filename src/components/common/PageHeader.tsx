@@ -1,5 +1,8 @@
+"use client";
+
 import { AlignLeft, FileOutput } from "lucide-react";
 import DateRangePicker from "./DateRangePicker";
+import { useSidebar } from "@/components/layout/Sidebar/SidebarContext";
 
 interface PageHeaderProps {
   title: string;
@@ -7,13 +10,20 @@ interface PageHeaderProps {
 }
 
 export default function PageHeader({ title, subtitle }: PageHeaderProps) {
+  const { openSidebar } = useSidebar();
+
   return (
     <header className="border-b border-[#e2e8f0] pb-6">
       {/* Main container */}
       <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
         {/* Left Side */}
         <div className="flex items-start gap-3 min-w-0 flex-1">
-          <AlignLeft size={38} className="mt-1 text-[#0f172a] shrink-0" />
+          <button
+            onClick={openSidebar}
+            className="lg:hidden shrink-0 cursor-pointer"
+          >
+            <AlignLeft size={38} className="text-[#0f172a]" />
+          </button>
           <div className="min-w-0 flex-1">
             <h1 className="text-3xl font-bold tracking-tight text-[#0f172a] xl:text-4xl">
               {title}
