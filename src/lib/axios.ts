@@ -6,3 +6,10 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+api.interceptors.request.use((config) => {
+  console.log("REQUEST URL:", config.url);
+  console.log("REQUEST HEADERS:", config.headers);
+
+  return config;
+});

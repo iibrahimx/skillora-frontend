@@ -1,3 +1,5 @@
+"use client";
+
 import PageHeader from "@/components/common/PageHeader";
 import EmployeeStats from "./EmployeeStats";
 import DepartmentCard from "./DepartmentCard";
