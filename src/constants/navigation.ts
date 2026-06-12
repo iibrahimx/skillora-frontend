@@ -1,7 +1,7 @@
 import {
   LayoutDashboard,
   BarChart3,
-  ShieldCheck,
+  // ShieldCheck,
   Users,
   ClipboardList,
   BookOpen,
@@ -20,11 +20,11 @@ export const navigationItems = [
     href: "/analytics",
     icon: BarChart3,
   },
-  {
-    label: "Compliance Monitoring",
-    href: "/compliance",
-    icon: ShieldCheck,
-  },
+  // {
+  //   label: "Compliance Monitoring",
+  //   href: "/compliance",
+  //   icon: ShieldCheck,
+  // },
   {
     label: "Employee Management",
     href: "/employees",
