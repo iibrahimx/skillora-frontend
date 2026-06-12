@@ -7,7 +7,6 @@ import {
   BookOpen,
   Settings,
   HelpCircle,
-  LogOut,
 } from "lucide-react";
 
 export const navigationItems = [
@@ -53,10 +52,5 @@ export const footerItems = [
     label: "Help",
     href: "/help",
     icon: HelpCircle,
-  },
-  {
-    label: "Logout",
-    href: "/logout",
-    icon: LogOut,
   },
 ];
