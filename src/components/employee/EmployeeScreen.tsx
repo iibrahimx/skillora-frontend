@@ -35,7 +35,7 @@ export default function EmployeeScreen() {
         </div>
 
         <div className="space-y-4">
-          <DepartmentCard />
+          <DepartmentCard departments={departmentsData?.data ?? []} />
           <OnboardingStatusCard />
           <TrainingHistoryCard />
           <RoleManagementCard />

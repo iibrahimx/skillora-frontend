@@ -8,7 +8,7 @@ interface DepartmentsResponse {
 }
 
 const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjkzZjM3MTQyZWI0OWU3ZWFkMDcwNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4MTI4MDA0MSwiZXhwIjoxNzgxMzIzMjQxfQ.ZfZItysGaqHGviVEefF9Fy3x0cjo3NQXufoHR-slrUQ";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjkzZjM3MTQyZWI0OWU3ZWFkMDcwNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4MTI4NTExNSwiZXhwIjoxNzgxMzI4MzE1fQ.nwUyBOzFcHXjE7QacUcneSYSdIGQCuY8eu0yv9hNTu0";
 
 export const useDepartments = () => {
   return useQuery<DepartmentsResponse>({
