@@ -8,12 +8,17 @@ import RoleManagementCard from "./RoleManagementCard";
 import TrainingHistoryCard from "./TrainingHistoryCard";
 import EmployeeTable from "./EmployeeTable";
 import { useUsers } from "@/hooks/useUsers";
+import { useEffect } from "react";
 
 export default function EmployeeScreen() {
   const { data, isLoading, error } = useUsers();
-  if (data) {
-    console.log(data.users);
-  }
+
+  useEffect(() => {
+    if (data) {
+      console.log("USERS:");
+      console.log(data.users);
+    }
+  }, [data]);
 
   return (
     <div className="space-y-8">
