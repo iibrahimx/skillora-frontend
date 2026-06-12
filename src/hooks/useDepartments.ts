@@ -1,20 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import { getUsers } from "@/services/user.service";
-import { User } from "@/types/user";
+import { getDepartments } from "@/services/department.service";
+import { Department } from "@/types/department";
 
-interface UsersResponse {
+interface DepartmentsResponse {
   message: string;
-  users: User[];
+  data: Department[];
 }
 
 const TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjkzZjM3MTQyZWI0OWU3ZWFkMDcwNiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4MTI4MDA0MSwiZXhwIjoxNzgxMzIzMjQxfQ.ZfZItysGaqHGviVEefF9Fy3x0cjo3NQXufoHR-slrUQ";
 
-export const useUsers = () => {
-  return useQuery<UsersResponse>({
-    queryKey: ["users"],
+export const useDepartments = () => {
+  return useQuery<DepartmentsResponse>({
+    queryKey: ["departments"],
     queryFn: async () => {
-      const result = await getUsers(TOKEN);
+      const result = await getDepartments(TOKEN);
       return result;
     },
   });
