@@ -3,9 +3,20 @@
 import { useMemo, useState } from "react";
 import { Search, Filter, Download, Plus, MoreVertical } from "lucide-react";
 import Image from "next/image";
-import { employees } from "@/data/employee-mock-data";
+// import { employees } from "@/data/employee-mock-data";
+import { User } from "@/types/user";
+import { Department } from "@/types/department";
+import { getInitials } from "@/lib/getInitials";
 
-export default function EmployeeTable() {
+interface EmployeeTableProps {
+  users: User[];
+  departments: Department[];
+}
+
+export default function EmployeeTable({
+  users,
+  departments,
+}: EmployeeTableProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -13,17 +24,18 @@ export default function EmployeeTable() {
 
   // Filter function
   const filteredEmployees = useMemo(() => {
-    return employees.filter((employee) => {
+    const employeesOnly = users.filter((user) => user.role === "employee");
+
+    return employeesOnly.filter((employee) => {
       const search = searchTerm.toLowerCase();
 
       return (
         employee.name.toLowerCase().includes(search) ||
         employee.email.toLowerCase().includes(search) ||
-        employee.department.toLowerCase().includes(search) ||
         employee.role.toLowerCase().includes(search)
       );
     });
-  }, [searchTerm]);
+  }, [users, searchTerm]);
 
   // Pgination function
   const totalPages = Math.ceil(filteredEmployees.length / itemsPerPage);
@@ -32,6 +44,21 @@ export default function EmployeeTable() {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+  const departmentMap = departments.reduce(
+    (acc, department) => {
+      acc[department._id] = department.name;
+      return acc;
+    },
+    {} as Record<string, string>
+  );
+
+  const departmentIcons: Record<string, string> = {
+    Administration: "/icons/operation.svg",
+    Backend: "/icons/engineering.svg",
+    "Frontend Development": "/icons/product.svg",
+    "Virtual Assistant": "/icons/customer-success.svg",
+  };
 
   return (
     <div className="rounded-xl border border-[#D9D9D9] bg-white h-full flex flex-col">
@@ -57,12 +84,12 @@ export default function EmployeeTable() {
             />
           </div>
 
-          <button className="flex h-9 items-center gap-2 rounded-md border border-[#D9D9D9] px-4 text-xs">
+          <button className="flex h-9 items-center gap-2 rounded-md border border-[#D9D9D9] px-4 text-xs cursor-pointer">
             <Filter size={16} />
             Filter
           </button>
 
-          <button className="flex h-9 items-center gap-2 rounded-md border border-[#D9D9D9] px-4 text-xs">
+          <button className="flex h-9 items-center gap-2 rounded-md border border-[#D9D9D9] px-4 text-xs cursor-pointer">
             <Download size={16} />
             Export
           </button>
@@ -90,13 +117,13 @@ export default function EmployeeTable() {
                 Role
               </th>
 
-              <th className="w-[100px] px-3 py-4 text-left text-xs font-semibold">
+              {/* <th className="w-[100px] px-3 py-4 text-left text-xs font-semibold">
                 Onboarding Status
-              </th>
+              </th> */}
 
-              <th className="w-[110px] px-3 py-4 text-left text-xs font-semibold">
+              {/* <th className="w-[110px] px-3 py-4 text-left text-xs font-semibold">
                 Tracking
-              </th>
+              </th> */}
 
               <th className="w-[60px] px-2 py-4 text-left text-xs font-semibold">
                 Status
@@ -111,12 +138,12 @@ export default function EmployeeTable() {
           <tbody>
             {paginatedEmployees.map((employee) => (
               <tr
-                key={employee.id}
+                key={employee._id}
                 className="border-b space-x-4 border-[#E5E5E5]"
               >
                 <td className="px-3 py-4 w-[300px] lg:w-[140px]">
                   <div className="flex items-center justify-between gap-3 min-w-0">
-                    <div className="relative flex-shrink-0 overflow-hidden rounded-full bg-[#F3F3F3]">
+                    {/* <div className="relative flex-shrink-0 overflow-hidden rounded-full bg-[#F3F3F3]">
                       <Image
                         src={employee.avatar}
                         alt={employee.name}
@@ -124,6 +151,9 @@ export default function EmployeeTable() {
                         height={38}
                         className="object-cover"
                       />
+                    </div> */}
+                    <div className="flex h-8 w-10 items-center justify-center rounded-full bg-[#3665CA] text-xs font-semibold text-white">
+                      {getInitials(employee.name)}
                     </div>
 
                     <div className="w-full">
@@ -136,7 +166,7 @@ export default function EmployeeTable() {
                   </div>
                 </td>
 
-                <td className="px-3 py-4">
+                {/* <td className="px-3 py-4">
                   <div className="ml-6 flex items-center gap-1.5">
                     <Image
                       src={employee.departmentIcon}
@@ -148,13 +178,31 @@ export default function EmployeeTable() {
                       {employee.department}
                     </span>
                   </div>
+                </td> */}
+                <td className="px-3 py-4">
+                  <div className="ml-6 flex items-center gap-1.5">
+                    <Image
+                      src={
+                        departmentIcons[
+                          departmentMap[employee.department] ?? ""
+                        ] || "/icons/department.svg"
+                      }
+                      alt="department"
+                      width={11}
+                      height={11}
+                    />
+
+                    <span className="whitespace-nowrap text-[10px] text-black">
+                      {departmentMap[employee.department] ?? "Unknown"}
+                    </span>
+                  </div>
                 </td>
 
                 <td className="w-[90px] px-3 py-4 text-[10px]">
                   {employee.role}
                 </td>
 
-                <td className="px-3 py-4">
+                {/* <td className="px-3 py-4">
                   <div className="space-y-1">
                     <span
                       className={`rounded px-2 py-1 text-[10px] ${
@@ -171,9 +219,9 @@ export default function EmployeeTable() {
                       {employee.onboardingDate}
                     </p>
                   </div>
-                </td>
+                </td> */}
 
-                <td className="px-3 py-4">
+                {/* <td className="px-3 py-4">
                   <div className="space-y-1">
                     <p className="text-[10px] text-black">
                       {employee.completedTraining}/{employee.totalTraining}
@@ -198,17 +246,17 @@ export default function EmployeeTable() {
                       <span className="text-[10px]">{employee.progress}%</span>
                     </div>
                   </div>
-                </td>
+                </td> */}
 
                 <td className="w-[60px] px-2 py-4">
                   <span
                     className={`rounded px-2 py-1 text-[10px] ${
-                      employee.status === "Active"
+                      employee.isActive
                         ? "bg-[#EAFBF0] text-[#22A447]"
                         : "bg-[#FFE8E8] text-[#E53935]"
                     }`}
                   >
-                    {employee.status}
+                    {employee.isActive ? "Active" : "Inactive"}
                   </span>
                 </td>
 
