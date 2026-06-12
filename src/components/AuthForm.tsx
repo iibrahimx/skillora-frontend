@@ -65,7 +65,7 @@ export default function AuthForm({
               </div>
             ))}
 
-            <Button type="submit" className="mt-2">
+            <Button type="submit" className="mt-2 cursor-pointer">
               {buttonText}
             </Button>
 
