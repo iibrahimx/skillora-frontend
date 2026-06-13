@@ -14,8 +14,8 @@ export default function DashboardStats() {
         title="Completion Rate"
         value={isLoading ? "..." : `${analytics?.completionRate ?? 0}%`}
         // value={`${analytics?.completionRate ?? 0}%`}
-        change="+7%"
-        trend="up"
+        // change="+7%"
+        // trend="up"
         icon="/icons/completion-rate.svg"
         cardBg="bg-[#EEF4FF]"
         titleColor="text-[#3665CA]"
@@ -27,8 +27,8 @@ export default function DashboardStats() {
         title="Active Learners"
         value={isLoading ? "..." : `${analytics?.activeUsers ?? 0}`}
         // value={`${analytics?.activeUsers ?? 0}`}
-        change="+135%"
-        trend="up"
+        // change="+135%"
+        // trend="up"
         icon="/icons/active-learners.svg"
         cardBg="bg-[#F4FBF6]"
         titleColor="text-[#34A853]"
@@ -40,8 +40,8 @@ export default function DashboardStats() {
         title="Overdue Trainings"
         value={isLoading ? "..." : `${analytics?.overdueTraining ?? 0}`}
         // value={`${analytics?.overdueTraining ?? 0}`}
-        change="-10%"
-        trend="down"
+        // change="-10%"
+        // trend="down"
         icon="/icons/overdue-trainings.svg"
         cardBg="bg-[#FBF7F2]"
         titleColor="text-[#A67C52]"
