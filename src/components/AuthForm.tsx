@@ -4,7 +4,7 @@ import { Formik, Form } from "formik";
 import { Schema } from "yup";
 import FormField from "@/components/FormField";
 import Button from "@/components/button";
-import SocialAuth from "@/components/SocialAuth";
+// import SocialAuth from "@/components/SocialAuth";
 import Link from "next/link";
 
 type FieldConfig = {
@@ -23,6 +23,7 @@ type AuthFormProps = {
   showSocialAuth?: boolean;
   showDivider?: boolean;
   dividerText?: string;
+  isLoading?: boolean;
   footerLink?: {
     text: string;
     href: string;
@@ -36,9 +37,10 @@ export default function AuthForm({
   validationSchema,
   onSubmit,
   buttonText,
-  showSocialAuth = false,
-  showDivider = false,
-  dividerText = "or login with",
+  isLoading = false,
+  // showSocialAuth = false,
+  // showDivider = false,
+  // dividerText = "or login with",
   footerLink,
 }: AuthFormProps) {
   return (
@@ -65,11 +67,11 @@ export default function AuthForm({
               </div>
             ))}
 
-            <Button type="submit" className="mt-2">
-              {buttonText}
+            <Button type="submit" className="mt-2" disabled={isLoading}>
+              {isLoading ? "Logging in..." : buttonText}
             </Button>
 
-            {showDivider && (
+            {/* {showDivider && (
               <div className="flex items-center gap-4 my-2">
                 <div className="flex-1 h-px bg-gray-300" />
                 <span className="text-sm font-semibold text-gray-700">
@@ -77,16 +79,16 @@ export default function AuthForm({
                 </span>
                 <div className="flex-1 h-px bg-gray-300" />
               </div>
-            )}
+            )} */}
           </Form>
         )}
       </Formik>
 
-      {showSocialAuth && (
+      {/* {showSocialAuth && (
         <div className="mt-6">
           <SocialAuth />
         </div>
-      )}
+      )} */}
 
       {footerLink && (
         <div className="mt-8 text-center text-sm text-gray-700">

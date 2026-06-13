@@ -1,7 +1,38 @@
-import { departmentSummary } from "@/data/employee-mock-data";
 import Image from "next/image";
+import { Department } from "@/types/department";
 
-export default function DepartmentCard() {
+interface DepartmentCardProps {
+  departments: Department[];
+}
+
+export default function DepartmentCard({ departments }: DepartmentCardProps) {
+  const departmentIcons: Record<
+    string,
+    {
+      icon: string;
+      color: string;
+    }
+  > = {
+    Administration: {
+      icon: "/icons/operation.svg",
+      color: "#C026D3",
+    },
+
+    Backend: {
+      icon: "/icons/engineering.svg",
+      color: "#9333EA",
+    },
+
+    "Frontend Development": {
+      icon: "/icons/product.svg",
+      color: "#2563EB",
+    },
+
+    "Virtual Assistant": {
+      icon: "/icons/customer-success.svg",
+      color: "#16A34A",
+    },
+  };
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <div className="mb-4 flex items-center justify-between">
@@ -13,34 +44,27 @@ export default function DepartmentCard() {
       </div>
 
       <div className="space-y-3">
-        {departmentSummary.map((department) => {
-          // const Icon = department.icon;
-
+        {departments.map((department) => {
+          const metadata = departmentIcons[department.name];
           return (
             <div
-              key={department.department}
+              key={department._id}
               className="flex items-center justify-between"
             >
               <div className="flex items-center gap-2">
-                {/* <Icon
-                  size={13}
-                  style={{
-                    color: department.color,
-                  }}
-                /> */}
                 <Image
-                  src={department.icon}
-                  alt={department.department}
+                  src={metadata?.icon ?? "/icons/department.svg"}
+                  alt={department.name}
                   width={13}
                   height={13}
                 />
 
-                <span className="text-xs text-black">
-                  {department.department}
-                </span>
+                <span className="text-xs text-black">{department.name}</span>
               </div>
 
-              <span className="text-xs text-black">{department.employees}</span>
+              <span className="text-xs text-black">
+                {department.members.length}
+              </span>
             </div>
           );
         })}

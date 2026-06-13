@@ -8,7 +8,7 @@ const signUpSchema = Yup.object({
   name: Yup.string().required("Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
-    .min(6, "Min 6 characters")
+    .min(5, "Min 5 characters")
     .required("Password is required"),
 });
 
@@ -75,9 +75,9 @@ export default function SignUpPage() {
             );
 
             const data = await res.json();
-
+            console.log("ALIYATOBJECT:", data);
             if (!res.ok) {
-              throw new Error(data.message || "Signup failed");
+              throw new Error(data.error || "Signup failed");
             }
 
             console.log("User created successfully:", data);

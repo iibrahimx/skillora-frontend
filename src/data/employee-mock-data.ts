@@ -28,7 +28,7 @@ export const employeeMetrics = [
   },
 
   {
-    title: "Completed Training",
+    title: "Published Training",
     value: "85%",
     subtitle: "This Year",
     icon: "/icons/completed-training.svg",

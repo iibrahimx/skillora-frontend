@@ -30,7 +30,7 @@ export default function AuthLayout({
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="flex w-full lg:w-1/2 justify-center px-8 overflow-y-auto">
+      <div className="flex w-full lg:w-1/2 justify-center items-center px-8 overflow-y-auto">
         <div className="w-full max-w-xl py-8">
           <h1 className="text-center text-5xl font-bold">{title}</h1>
 

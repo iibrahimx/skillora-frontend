@@ -2,13 +2,20 @@
 import AuthLayout from "@/components/AuthLayout";
 import AuthForm from "@/components/AuthForm";
 import { signInSchema } from "@/lib/validation/signInSchema";
+import { useLogin } from "@/hooks/useLogin";
+import { useAuthStore } from "@/store/auth-store";
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
+  const router = useRouter();
+  const { mutateAsync, isPending } = useLogin();
+  const setAuth = useAuthStore((state) => state.setAuth);
+
   return (
     <AuthLayout
       title="Welcome back"
       subtitle="Login to your account"
-      leftImgSrc="/IMAGES/auth/sign-in.png"
+      leftImgSrc="/images/auth/sign-in.png"
     >
       <AuthForm
         fields={[
@@ -25,41 +32,27 @@ export default function SignInPage() {
             label: "Password",
           },
         ]}
+        isLoading={isPending}
         initialValues={{ email: "", password: "" }}
         validationSchema={signInSchema}
         onSubmit={async (values) => {
           try {
-            const res = await fetch(
-              "https://skillora-bi8e.onrender.com/api/auth/login",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(values),
-              }
-            );
+            const result = await mutateAsync({
+              email: values.email,
+              password: values.password,
+            });
 
-            const data = await res.json();
+            console.log("LOGIN RESPONSE");
+            console.log(result);
 
-            console.log("LOGIN RESPONSE:", data);
+            setAuth(result.token, result.user);
 
-            if (!res.ok) {
-              throw new Error(data.message || "Login failed");
-            }
-
-            localStorage.setItem("token", data.token);
-
-            alert("Login successful!");
+            router.push("/dashboard");
           } catch (error) {
             console.error(error);
-
-            if (error instanceof Error) {
-              alert(error.message);
-            }
           }
         }}
-        buttonText="Log in"
+        buttonText="Log in to Dashboard"
         showSocialAuth={true}
         showDivider={true}
         dividerText="or login with"
