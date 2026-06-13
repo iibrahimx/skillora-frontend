@@ -41,10 +41,6 @@ export default function SignInPage() {
               email: values.email,
               password: values.password,
             });
-
-            console.log("LOGIN RESPONSE");
-            console.log(result);
-
             setAuth(result.token, result.user);
 
             router.push("/dashboard");
