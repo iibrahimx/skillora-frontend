@@ -8,4 +8,8 @@ export interface User {
   badges: string[];
   createdAt: string;
   updatedAt: string;
+  onboardingStatus?: string;
+  tracking?: string;
+  assignments?: string[];
+  modules?: string[];
 }
