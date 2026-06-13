@@ -3,6 +3,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { departmentComplianceData } from "./compliance/mockData";
+
+// PR #35 - conflict resolved, ready for review
+// Trigger CI re-run - PR #35
 export function AssignmentManagement() {
   const [assignments, setAssignments] = useState([]);
   const [open, setOpen] = useState(false);
