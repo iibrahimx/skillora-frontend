@@ -4,8 +4,8 @@ import Image from "next/image";
 interface DashboardStatCardProps {
   title: string;
   value: string;
-  change: string;
-  trend: "up" | "down";
+  change?: string;
+  trend?: "up" | "down";
   icon: string;
   cardBg: string;
   titleColor: string;
@@ -55,23 +55,25 @@ export default function DashboardStatCard({
       </div>
 
       {/* Footer */}
-      <div className="mt-2 flex flex-wrap items-center gap-2">
-        {trend === "up" ? (
-          <TrendingUp size={14} className="text-[#1A881A]" />
-        ) : (
-          <TrendingDown size={14} className="text-[#FF0000]" />
-        )}
+      {change && trend && (
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          {trend === "up" ? (
+            <TrendingUp size={14} className="text-[#1A881A]" />
+          ) : (
+            <TrendingDown size={14} className="text-[#FF0000]" />
+          )}
 
-        <span
-          className={`text-sm font-semibold ${
-            trend === "up" ? "text-[#1A881A]" : "text-[#FF0000]"
-          }`}
-        >
-          {change}
-        </span>
+          <span
+            className={`text-sm font-semibold ${
+              trend === "up" ? "text-[#1A881A]" : "text-[#FF0000]"
+            }`}
+          >
+            {change}
+          </span>
 
-        <span className="text-xs text-#646464">vs last 7 days</span>
-      </div>
+          <span className="text-xs text-#646464">vs last 7 days</span>
+        </div>
+      )}
     </div>
   );
 }

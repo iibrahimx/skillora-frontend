@@ -13,11 +13,17 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   const token = useAuthStore((state) => state.token);
 
+  const hasHydrated = useAuthStore((state) => state.hasHydrated);
+
   useEffect(() => {
-    if (!token) {
+    if (hasHydrated && !token) {
       router.replace("/sign-in");
     }
-  }, [token, router]);
+  }, [hasHydrated, token, router]);
+
+  if (!hasHydrated) {
+    return null;
+  }
 
   if (!token) {
     return null;

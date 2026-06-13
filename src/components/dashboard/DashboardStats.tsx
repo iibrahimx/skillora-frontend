@@ -1,13 +1,21 @@
+"use client";
+
+import { useAnalytics } from "@/hooks/useAnalytics";
 import DashboardStatCard from "./DashboardStatCard";
 
 export default function DashboardStats() {
+  const { data, isLoading } = useAnalytics();
+
+  const analytics = data?.data;
+
   return (
-    <section className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <section className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
       <DashboardStatCard
-        title="Completion Rates"
-        value="70%"
-        change="+7%"
-        trend="up"
+        title="Completion Rate"
+        value={isLoading ? "..." : `${analytics?.completionRate ?? 0}%`}
+        // value={`${analytics?.completionRate ?? 0}%`}
+        // change="+7%"
+        // trend="up"
         icon="/icons/completion-rate.svg"
         cardBg="bg-[#EEF4FF]"
         titleColor="text-[#3665CA]"
@@ -17,9 +25,10 @@ export default function DashboardStats() {
 
       <DashboardStatCard
         title="Active Learners"
-        value="1,543"
-        change="+135%"
-        trend="up"
+        value={isLoading ? "..." : `${analytics?.activeUsers ?? 0}`}
+        // value={`${analytics?.activeUsers ?? 0}`}
+        // change="+135%"
+        // trend="up"
         icon="/icons/active-learners.svg"
         cardBg="bg-[#F4FBF6]"
         titleColor="text-[#34A853]"
@@ -29,9 +38,10 @@ export default function DashboardStats() {
 
       <DashboardStatCard
         title="Overdue Trainings"
-        value="32"
-        change="-10%"
-        trend="down"
+        value={isLoading ? "..." : `${analytics?.overdueTraining ?? 0}`}
+        // value={`${analytics?.overdueTraining ?? 0}`}
+        // change="-10%"
+        // trend="down"
         icon="/icons/overdue-trainings.svg"
         cardBg="bg-[#FBF7F2]"
         titleColor="text-[#A67C52]"
@@ -39,7 +49,7 @@ export default function DashboardStats() {
         iconColor="text-orange-600"
       />
 
-      <DashboardStatCard
+      {/* <DashboardStatCard
         title="Compliance Percentage"
         value="84%"
         change="+6%"
@@ -49,7 +59,7 @@ export default function DashboardStats() {
         titleColor="text-[#7B61B3]"
         iconBg="bg-purple-100"
         iconColor="text-purple-600"
-      />
+      /> */}
     </section>
   );
 }
