@@ -1,9 +1,23 @@
 "use client";
 
-import { UserMinus, ArrowRight, Info } from "lucide-react";
-import { incompleteUsers } from "./analytics-data";
+import { UserMinus, Info } from "lucide-react";
+import { useUsers } from "@/hooks/useUsers";
 
 export default function IncompleteUsers() {
+  const { data } = useUsers();
+
+  const users = data?.users ?? [];
+  console.log(users);
+
+  const incompleteUsers = users.filter(
+    (user) => user.onboardingStatus !== "completed"
+  );
+
+  const percentage =
+    users.length > 0
+      ? Math.round((incompleteUsers.length / users.length) * 100)
+      : 0;
+
   return (
     <section className="w-full h-full flex flex-col justify-between rounded-xl border border-gray-100 shadow-sm p-6 bg-[#D9D9D9] min-h-[430px]">
       <div className="flex-1 flex flex-col justify-between">
@@ -22,14 +36,14 @@ export default function IncompleteUsers() {
             <div>
               <div className="flex items-baseline space-x-2">
                 <span className="text-xl font-extrabold text-gray-950">
-                  194
+                  {incompleteUsers.length}
                 </span>
                 <span className="text-sm font-bold text-gray-900">
                   Incomplete Users
                 </span>
               </div>
               <p className="text-xs text-gray-700 font-semibold mt-0.5">
-                17% of total users
+                {percentage}% of total users
               </p>
             </div>
           </div>
@@ -41,24 +55,22 @@ export default function IncompleteUsers() {
                   <th className="pb-3 font-bold">User</th>
                   <th className="pb-3 font-bold pl-2">Email</th>
                   <th className="pb-3 font-bold pl-2">Last Activity</th>
-                  <th className="pb-3 font-bold text-right">Progress</th>
+                  <th className="pb-3 font-bold text-right">Status</th>
                 </tr>
               </thead>
               <tbody className="text-xs text-gray-800 font-medium">
                 {incompleteUsers.map((user) => (
                   <tr
-                    key={user.id}
+                    key={user._id}
                     className="border-b border-gray-300/40 last:border-none"
                   >
                     <td className="py-3.5 font-bold text-gray-900">
                       {user.name}
                     </td>
                     <td className="py-3.5 text-gray-600 pl-2">{user.email}</td>
-                    <td className="py-3.5 text-gray-600 pl-2">
-                      {user.lastActivity}
-                    </td>
+                    <td className="py-3.5 text-gray-600 pl-2">N/A</td>
                     <td className="py-3.5 text-right font-bold text-gray-900">
-                      {user.progress}%
+                      {user.onboardingStatus}
                     </td>
                   </tr>
                 ))}
@@ -67,10 +79,10 @@ export default function IncompleteUsers() {
           </div>
         </div>
 
-        <button className="w-full flex items-center justify-center space-x-2 text-sm font-bold text-[#2f60cf] hover:text-[#1d4ed8] mt-6 transition-colors self-end">
+        {/* <button className="w-full flex items-center justify-center space-x-2 text-sm font-bold text-[#2f60cf] hover:text-[#1d4ed8] mt-6 transition-colors self-end">
           <span>View all Incomplete Users</span>
           <ArrowRight className="w-4 h-4" />
-        </button>
+        </button> */}
       </div>
     </section>
   );

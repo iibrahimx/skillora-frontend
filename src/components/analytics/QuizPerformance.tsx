@@ -1,25 +1,30 @@
 "use client";
 
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  ResponsiveContainer,
-  LineChart,
-  Line,
-} from "recharts";
+// import {
+//   BarChart,
+//   Bar,
+//   XAxis,
+//   YAxis,
+//   ResponsiveContainer,
+//   LineChart,
+//   Line,
+// } from "recharts";
 // import { Info } from 'lucide-react';
-import {
-  quizPerformanceData,
-  sparklineScores,
-  sparklineQuizzes,
-  sparklinePassRate,
-} from "./analytics-data";
+// import {
+//   quizPerformanceData,
+//   sparklineScores,
+//   sparklineQuizzes,
+//   sparklinePassRate,
+// } from "./analytics-data";
 import { Info } from "lucide-react";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function QuizPerformance() {
+  const { data: analyticsData } = useAnalytics();
+
+  const analytics = analyticsData?.data;
+
   return (
     <section className="w-full h-full flex flex-col justify-between min-h-0 p-6">
       <div>
@@ -34,22 +39,22 @@ export default function QuizPerformance() {
           {[
             {
               title: "Average Score",
-              value: "72%",
-              data: sparklineScores,
+              value: `${analytics?.avgQuizScore ?? 0}%`,
+              // data: sparklineScores,
               color: "#22c55e",
               bg: "bg-emerald-50/50",
             },
             {
               title: "Quizzes Taken",
-              value: "1576",
-              data: sparklineQuizzes,
+              value: `${analytics?.totalAssignments ?? 0}`,
+              // data: sparklineQuizzes,
               color: "#f97316",
               bg: "bg-orange-50/50",
             },
             {
               title: "Pass Rate",
-              value: "68%",
-              data: sparklinePassRate,
+              value: "--",
+              // data: sparklinePassRate,
               color: "#a855f7",
               bg: "bg-purple-50/50",
             },
@@ -67,7 +72,7 @@ export default function QuizPerformance() {
                 </span>
               </div>
               <div className="h-6 w-full absolute bottom-2 left-0 right-0 px-2">
-                <ResponsiveContainer width="100%" height="100%">
+                {/* <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={item.data}>
                     <Line
                       type="monotone"
@@ -77,7 +82,12 @@ export default function QuizPerformance() {
                       dot={false}
                     />
                   </LineChart>
-                </ResponsiveContainer>
+                </ResponsiveContainer> */}
+                <div className="h-6 flex items-center">
+                  <span className="text-[10px] text-black/40">
+                    No trend data
+                  </span>
+                </div>
               </div>
             </div>
           ))}
@@ -85,7 +95,7 @@ export default function QuizPerformance() {
       </div>
 
       <div className="h-48 w-full relative pl-2">
-        <ResponsiveContainer width="100%" height="100%">
+        {/* <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={quizPerformanceData}
             margin={{ top: 25, right: 10, left: 10, bottom: 0 }}
@@ -119,7 +129,10 @@ export default function QuizPerformance() {
               }}
             />
           </BarChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer> */}
+        <div className="h-full flex items-center justify-center">
+          <span className="text-[30px] text-black/40">No trend data</span>
+        </div>
       </div>
     </section>
   );
