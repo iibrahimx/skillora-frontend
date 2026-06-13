@@ -1,27 +1,53 @@
 "use client";
 
-import { onboardingSummary } from "@/data/employee-mock-data";
 import { PieChart, Pie, Cell } from "recharts";
+import { User } from "@/types/user";
 
-const data = [
-  {
-    name: "Completed",
-    value: onboardingSummary.completed,
-    color: "#39D739",
-  },
-  {
-    name: "In Progress",
-    value: onboardingSummary.inProgress,
-    color: "#D32F2F",
-  },
-  {
-    name: "Not Started",
-    value: onboardingSummary.notStarted,
-    color: "#C9B800",
-  },
-];
+interface OnboardingStatusCardProps {
+  users: User[];
+}
 
-export default function OnboardingStatusCard() {
+export default function OnboardingStatusCard({
+  users,
+}: OnboardingStatusCardProps) {
+  const completed = users.filter(
+    (user) => user.onboardingStatus?.toLowerCase() === "completed"
+  ).length;
+
+  const notStarted = users.filter(
+    (user) => user.onboardingStatus?.toLowerCase() === "not started"
+  ).length;
+
+  const inProgress = users.filter(
+    (user) => user.onboardingStatus?.toLowerCase() === "in progress"
+  ).length;
+
+  const total = users.length;
+
+  const data = [
+    {
+      name: "Completed",
+      value: completed,
+      color: "#39D739",
+    },
+    {
+      name: "In Progress",
+      value: inProgress,
+      color: "#D32F2F",
+    },
+    {
+      name: "Not Started",
+      value: notStarted,
+      color: "#C9B800",
+    },
+  ];
+
+  const getPercentage = (value: number) => {
+    if (!total) return 0;
+
+    return Math.round((value / total) * 100);
+  };
+
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <div className="mb-4 flex items-center justify-between">
@@ -31,16 +57,11 @@ export default function OnboardingStatusCard() {
           View all
         </button>
       </div>
+
       <div className="flex items-center gap-3">
         <div className="relative">
           <PieChart width={80} height={80}>
-            <Pie
-              data={data}
-              innerRadius={22}
-              outerRadius={34}
-              paddingAngle={1}
-              dataKey="value"
-            >
+            <Pie data={data} innerRadius={22} outerRadius={34} dataKey="value">
               {data.map((entry) => (
                 <Cell key={entry.name} fill={entry.color} />
               ))}
@@ -48,43 +69,35 @@ export default function OnboardingStatusCard() {
           </PieChart>
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-lg font-bold text-black">
-              {onboardingSummary.total}
-            </span>
+            <span className="text-lg font-bold text-black">{total}</span>
 
             <span className="text-[10px] text-black">Total</span>
           </div>
         </div>
 
         <div className="flex-1 space-y-3">
-          <div className="flex items-center justify-between gap-2 text-[10px]">
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-[#39D739]" />
+          <div className="flex items-center justify-between text-[10px]">
+            <span>Completed</span>
 
-              <span>Completed</span>
-            </div>
-
-            <span>{onboardingSummary.completed} (61%)</span>
+            <span>
+              {completed} ({getPercentage(completed)}%)
+            </span>
           </div>
 
-          <div className="flex items-center justify-between gap-2 text-[10px]">
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-[#39D739]" />
+          <div className="flex items-center justify-between text-[10px]">
+            <span>In Progress</span>
 
-              <span>In Progress</span>
-            </div>
-
-            <span>{onboardingSummary.inProgress} (9%)</span>
+            <span>
+              {inProgress} ({getPercentage(inProgress)}%)
+            </span>
           </div>
 
-          <div className="flex items-center justify-between gap-2 text-[10px]">
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-[#39D739]" />
+          <div className="flex items-center justify-between text-[10px]">
+            <span>Not Started</span>
 
-              <span>Not Started</span>
-            </div>
-
-            <span>{onboardingSummary.notStarted} (30%)</span>
+            <span>
+              {notStarted} ({getPercentage(notStarted)}%)
+            </span>
           </div>
         </div>
       </div>
