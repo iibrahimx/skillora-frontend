@@ -1,11 +1,12 @@
-import { Info, TrendingUp, TrendingDown, LucideIcon } from "lucide-react";
+import { Info, TrendingUp, TrendingDown } from "lucide-react";
+import Image from "next/image";
 
 interface DashboardStatCardProps {
   title: string;
   value: string;
-  change: string;
-  trend: "up" | "down";
-  icon: LucideIcon;
+  change?: string;
+  trend?: "up" | "down";
+  icon: string;
   cardBg: string;
   titleColor: string;
   iconBg: string;
@@ -17,7 +18,7 @@ export default function DashboardStatCard({
   value,
   change,
   trend,
-  icon: Icon,
+  icon,
   cardBg,
   titleColor,
   iconBg,
@@ -39,7 +40,13 @@ export default function DashboardStatCard({
         <div
           className={`flex h-14 w-14 items-center justify-center rounded-full ${iconBg}`}
         >
-          <Icon size={30} className={iconColor} />
+          <Image
+            src={icon}
+            alt={title}
+            width={30}
+            height={30}
+            className={iconColor}
+          />
         </div>
 
         <h2 className="text-[35px] font-bold leading-none text-[#0f172a]">
@@ -48,23 +55,25 @@ export default function DashboardStatCard({
       </div>
 
       {/* Footer */}
-      <div className="mt-2 flex flex-wrap items-center gap-2">
-        {trend === "up" ? (
-          <TrendingUp size={14} className="text-[#1A881A]" />
-        ) : (
-          <TrendingDown size={14} className="text-[#FF0000]" />
-        )}
+      {change && trend && (
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          {trend === "up" ? (
+            <TrendingUp size={14} className="text-[#1A881A]" />
+          ) : (
+            <TrendingDown size={14} className="text-[#FF0000]" />
+          )}
 
-        <span
-          className={`text-sm font-semibold ${
-            trend === "up" ? "text-[#1A881A]" : "text-[#FF0000]"
-          }`}
-        >
-          {change}
-        </span>
+          <span
+            className={`text-sm font-semibold ${
+              trend === "up" ? "text-[#1A881A]" : "text-[#FF0000]"
+            }`}
+          >
+            {change}
+          </span>
 
-        <span className="text-xs text-#646464">vs last 7 days</span>
-      </div>
+          <span className="text-xs text-#646464">vs last 7 days</span>
+        </div>
+      )}
     </div>
   );
 }

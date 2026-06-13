@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function SidebarHeader() {
   return (
-    <div className="flex flex-col items-center gap-3 px-6 py-8">
+    <div className="flex flex-col items-center gap-3 px-6 py-4">
       <Image
         src="/icons/skillora-logo.svg"
         alt="SkillOra Logo"

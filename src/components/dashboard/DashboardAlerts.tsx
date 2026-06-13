@@ -1,30 +1,39 @@
+"use client";
+
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { AlertCircle, Clock3, ChevronRight } from "lucide-react";
 
-const alerts = [
-  {
-    title: "42 trainings are overdue",
-    description: "These trainings require immediate attention.",
-    bg: "#FDF2F2",
-    iconColor: "#EF4444",
-    isClock: false,
-  },
-  {
-    title: "12 trainings due this week",
-    description: "These trainings are due within the next 7 days.",
-    bg: "#F0FDF4",
-    iconColor: "#22C55E",
-    isClock: false,
-  },
-  {
-    title: "Great Job!",
-    description: "Compliance percentage increased by 7%",
-    bg: "#F5F3FF",
-    iconColor: "#8B5CF6",
-    isClock: true,
-  },
-];
-
 export default function DashboardAlerts() {
+  const { data: analyticsData } = useAnalytics();
+
+  const analytics = analyticsData?.data;
+
+  const alerts = [
+    {
+      title: `${analytics?.overdueTraining ?? 0} trainings overdue`,
+      description: "These trainings require immediate attention.",
+      bg: "#FDF2F2",
+      iconColor: "#EF4444",
+      isClock: false,
+    },
+
+    {
+      title: `${analytics?.activeUsers ?? 0} active learners`,
+      description: "Currently participating in training.",
+      bg: "#F0FDF4",
+      iconColor: "#22C55E",
+      isClock: false,
+    },
+
+    {
+      title: `${analytics?.completionRate ?? 0}% completion rate`,
+      description: "Current organization-wide completion rate.",
+      bg: "#F5F3FF",
+      iconColor: "#8B5CF6",
+      isClock: true,
+    },
+  ];
+
   return (
     <div className="h-full rounded-xl border border-[#e2e8f0] bg-[#F2F0F0] p-6 shadow-sm">
       <div className="mb-5 flex items-center justify-between">

@@ -1,7 +1,7 @@
 import { RefreshCcw, Info } from "lucide-react";
 
 import AuditReportCard from "./AuditReportCard";
-import { auditReports } from "./mockData";
+import { auditReports } from "@/data/compliance-mock-data";
 import DataTimestamp from "../common/DataTimestamp";
 
 export default function AuditReadyReports() {
@@ -31,7 +31,6 @@ export default function AuditReadyReports() {
             title={report.title}
             description={report.description}
             icon={report.icon}
-            iconColor={report.iconColor}
             iconBgColor={report.iconBgColor}
           />
         ))}
