@@ -1,25 +1,25 @@
 "use client";
 
-import {
-  BarChart,
-  Bar,
-  LabelList,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-} from "recharts";
+// import {
+//   BarChart,
+//   Bar,
+//   LabelList,
+//   ResponsiveContainer,
+//   XAxis,
+//   YAxis,
+//   Tooltip,
+//   CartesianGrid,
+// } from "recharts";
 
-const data = [
-  { day: "May 12", rate: 52 },
-  { day: "May 13", rate: 59 },
-  { day: "May 14", rate: 62 },
-  { day: "May 15", rate: 70 },
-  { day: "May 16", rate: 80 },
-  { day: "May 17", rate: 87 },
-  { day: "May 18", rate: 76 },
-];
+// const data = [
+//   { day: "May 12", rate: 52 },
+//   { day: "May 13", rate: 59 },
+//   { day: "May 14", rate: 62 },
+//   { day: "May 15", rate: 70 },
+//   { day: "May 16", rate: 80 },
+//   { day: "May 17", rate: 87 },
+//   { day: "May 18", rate: 76 },
+// ];
 
 export default function CompletionRateChart() {
   return (
@@ -35,7 +35,7 @@ export default function CompletionRateChart() {
       </div>
 
       <div className="h-[300px]">
-        <ResponsiveContainer width="100%" height="100%">
+        {/* <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
             margin={{
@@ -83,7 +83,12 @@ export default function CompletionRateChart() {
               />
             </Bar>
           </BarChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer> */}
+        <div className="h-[300px] flex items-center justify-center">
+          <p className="text-sm text-gray-500">
+            Completion trend data not available
+          </p>
+        </div>
       </div>
     </div>
   );

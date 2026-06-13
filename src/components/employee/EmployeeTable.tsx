@@ -1,25 +1,54 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Search, Filter, Download, Plus, MoreVertical } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Search, Download, Plus, MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { User } from "@/types/user";
 import { Department } from "@/types/department";
 import { getInitials } from "@/lib/getInitials";
+import ViewEmployeeModal from "@/components/common/ViewEmployeeModal";
+import EditEmployeeModal from "@/components/common/EditEmployeeModal";
+import ConfirmStatusModal from "@/components/common/ConfirmStatusModal";
+import { useUpdateUser } from "@/hooks/useUpdateUser";
 
 interface EmployeeTableProps {
   users: User[];
   departments: Department[];
+  onAddEmployee: () => void;
 }
 
 export default function EmployeeTable({
   users,
   departments,
+  onAddEmployee,
 }: EmployeeTableProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [departmentFilter, setDepartmentFilter] = useState("all");
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [viewModalOpen, setViewModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [statusModalOpen, setStatusModalOpen] = useState(false);
+
+  const updateUserMutation = useUpdateUser();
 
   const itemsPerPage = 8;
+
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setOpenMenu(null);
+    };
+
+    if (openMenu) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [openMenu]);
 
   const filteredEmployees = useMemo(() => {
     const employeesOnly = users.filter(
@@ -29,13 +58,22 @@ export default function EmployeeTable({
     return employeesOnly.filter((employee) => {
       const search = searchTerm.toLowerCase();
 
-      return (
+      const matchesSearch =
         employee.name.toLowerCase().includes(search) ||
         employee.email.toLowerCase().includes(search) ||
-        employee.role.toLowerCase().includes(search)
-      );
+        employee.role.toLowerCase().includes(search);
+
+      const matchesStatus =
+        statusFilter === "all" ||
+        (statusFilter === "active" && employee.isActive) ||
+        (statusFilter === "inactive" && !employee.isActive);
+
+      const matchesDepartment =
+        departmentFilter === "all" || employee.department === departmentFilter;
+
+      return matchesSearch && matchesStatus && matchesDepartment;
     });
-  }, [users, searchTerm]);
+  }, [users, searchTerm, statusFilter, departmentFilter]);
 
   const totalPages = Math.max(
     1,
@@ -60,6 +98,38 @@ export default function EmployeeTable({
     Backend: "/icons/engineering.svg",
     "Frontend Development": "/icons/product.svg",
     "Virtual Assistant": "/icons/customer-success.svg",
+  };
+
+  const handleExport = () => {
+    const csvRows = filteredEmployees.map((employee) => ({
+      Name: employee.name,
+      Email: employee.email,
+      Role: employee.role,
+      Department: departmentMap[employee.department] ?? "Unknown",
+      Status: employee.isActive ? "Active" : "Inactive",
+      Onboarding: employee.onboardingStatus ?? "Not Started",
+    }));
+
+    const headers = Object.keys(csvRows[0] || {}).join(",");
+
+    const rows = csvRows.map((row) => Object.values(row).join(","));
+
+    const csvContent = [headers, ...rows].join("\n");
+
+    const blob = new Blob([csvContent], {
+      type: "text/csv;charset=utf-8;",
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "employees.csv";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -87,17 +157,54 @@ export default function EmployeeTable({
             />
           </div>
 
-          <button className="flex h-9 items-center gap-2 rounded-md border border-[#D9D9D9] px-4 text-xs">
+          {/* <button className="flex h-9 items-center gap-2 rounded-md border border-[#D9D9D9] px-4 text-xs">
             <Filter size={16} />
             Filter
-          </button>
+          </button> */}
+          {/* Status Filter */}
+          <select
+            value={statusFilter}
+            onChange={(e) => {
+              setStatusFilter(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="h-9 rounded-md border border-[#D9D9D9] px-3 text-xs"
+          >
+            <option value="all">All Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
 
-          <button className="flex h-9 items-center gap-2 rounded-md border border-[#D9D9D9] px-4 text-xs">
+          {/* Department Filter */}
+          <select
+            value={departmentFilter}
+            onChange={(e) => {
+              setDepartmentFilter(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="h-9 rounded-md border border-[#D9D9D9] px-3 text-xs"
+          >
+            <option value="all">All Departments</option>
+
+            {departments.map((department) => (
+              <option key={department._id} value={department._id}>
+                {department.name}
+              </option>
+            ))}
+          </select>
+
+          <button
+            onClick={handleExport}
+            className="flex h-9 items-center gap-2 rounded-md border border-[#D9D9D9] px-4 text-xs cursor-pointer"
+          >
             <Download size={16} />
             Export
           </button>
 
-          <button className="flex h-9 items-center gap-2 rounded-md bg-[#3665CA] px-4 text-xs font-medium text-white">
+          <button
+            onClick={onAddEmployee}
+            className="flex h-9 items-center gap-2 rounded-md bg-[#3665CA] px-4 text-xs font-medium text-white cursor-pointer"
+          >
             <Plus size={16} />
             Add Employee
           </button>
@@ -255,9 +362,66 @@ export default function EmployeeTable({
                   </td>
 
                   <td className="px-4 py-4">
-                    <button className="cursor-pointer">
+                    {/* <button className="cursor-pointer">
                       <MoreVertical size={16} />
-                    </button>
+                    </button> */}
+                    <div className="relative">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenMenu(
+                            openMenu === employee._id ? null : employee._id
+                          );
+                        }}
+                        className={`rounded p-1 cursor-pointer ${
+                          openMenu === employee._id ? "bg-gray-100" : ""
+                        }`}
+                      >
+                        <MoreVertical size={16} />
+                      </button>
+
+                      {openMenu === employee._id && (
+                        <div
+                          onClick={(e) => e.stopPropagation()}
+                          className="absolute right-0 top-8 z-50 w-44 overflow-hidden rounded-xl border border-gray-300 bg-white shadow-lg"
+                        >
+                          <button
+                            onClick={() => {
+                              setSelectedUser(employee);
+                              setViewModalOpen(true);
+                              setOpenMenu(null);
+                            }}
+                            className="block w-full px-4 py-2 text-left text-[10px] hover:bg-gray-50 cursor-pointer"
+                          >
+                            View Employee
+                          </button>
+
+                          <button
+                            onClick={() => {
+                              setSelectedUser(employee);
+                              setEditModalOpen(true);
+                              setOpenMenu(null);
+                            }}
+                            className="block w-full px-4 py-2 text-left text-[10px] hover:bg-gray-50 cursor-pointer"
+                          >
+                            Edit Employee
+                          </button>
+
+                          <button
+                            onClick={() => {
+                              setSelectedUser(employee);
+                              setStatusModalOpen(true);
+                              setOpenMenu(null);
+                            }}
+                            className="block w-full px-4 py-2 text-left text-[10px] hover:bg-gray-50 cursor-pointer"
+                          >
+                            {employee.isActive
+                              ? "Deactivate Employee"
+                              : "Activate Employee"}
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </td>
                 </tr>
               );
@@ -310,6 +474,42 @@ export default function EmployeeTable({
           <option>8 per page</option>
         </select>
       </div>
+
+      <ViewEmployeeModal
+        open={viewModalOpen}
+        onClose={() => setViewModalOpen(false)}
+        user={selectedUser}
+      />
+
+      <EditEmployeeModal
+        open={editModalOpen}
+        onClose={() => setEditModalOpen(false)}
+        user={selectedUser}
+        departments={departments}
+      />
+
+      <ConfirmStatusModal
+        open={statusModalOpen}
+        onClose={() => setStatusModalOpen(false)}
+        employeeName={selectedUser?.name ?? ""}
+        activate={!selectedUser?.isActive}
+        onConfirm={async () => {
+          if (!selectedUser) return;
+
+          try {
+            await updateUserMutation.mutateAsync({
+              id: selectedUser._id,
+              payload: {
+                isActive: !selectedUser.isActive,
+              },
+            });
+
+            setStatusModalOpen(false);
+          } catch (error) {
+            console.error(error);
+          }
+        }}
+      />
     </div>
   );
 }
