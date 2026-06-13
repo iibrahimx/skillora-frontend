@@ -10,16 +10,19 @@ export default function TrainingHistoryCard({
   assignments,
 }: TrainingHistoryCardProps) {
   return (
-    <div className="rounded-xl max-h-[200px] xl:max-h-[190px] border border-slate-200 bg-white px-3 py-3 shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 shadow-sm flex flex-col">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-bold text-black">Assigned Training</h3>
 
-        <button className="text-xs font-medium text-[#0404FF] cursor-pointer">
+        <button
+          // aria-disabled="true"
+          className="text-xs font-medium text-[#0404FF] cursor-pointer"
+        >
           View all
         </button>
       </div>
 
-      <div className="space-y-3">
+      <div className="flex-1 space-y-3 overflow-y-auto pr-1">
         {assignments.map((assignment) => (
           <div
             key={assignment._id}

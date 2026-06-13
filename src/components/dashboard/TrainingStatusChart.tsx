@@ -1,29 +1,31 @@
 "use client";
 
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-const data = [
-  {
-    name: "Completed",
-    value: 245,
-    percentage: 58,
-    color: "#2CAA36",
-  },
-  {
-    name: "In Progress",
-    value: 120,
-    percentage: 29,
-    color: "#C2BB33",
-  },
-  {
-    name: "Overdue",
-    value: 55,
-    percentage: 13,
-    color: "#BB2929",
-  },
-];
-
 export default function TrainingStatusChart() {
+  const { data: analyticsData } = useAnalytics();
+
+  const analytics = analyticsData?.data;
+
+  const data = [
+    {
+      name: "Completed",
+      value: analytics?.completedPercentage ?? 0,
+      color: "#2CAA36",
+    },
+    {
+      name: "In Progress",
+      value: analytics?.inProgressPercentage ?? 0,
+      color: "#C2BB33",
+    },
+    {
+      name: "Not Started",
+      value: analytics?.notStartedPercentage ?? 0,
+      color: "#BB2929",
+    },
+  ];
+
   return (
     <div className="h-full min-w-0 overflow-hidden rounded-xl border border-[#e2e8f0] bg-[#F2F0F0] p-6 shadow-sm">
       <h3 className="mb-2 text-[15px] font-bold text-black">
@@ -48,9 +50,11 @@ export default function TrainingStatusChart() {
           </ResponsiveContainer>
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-[15px] text-black">Total Trainings</span>
+            <span className="text-[15px] text-black">Completed Training</span>
 
-            <span className="text-[32px] font-bold">420</span>
+            <span className="text-[32px] font-bold">
+              {analytics?.completedPercentage ?? 0}%
+            </span>
           </div>
         </div>
 
@@ -74,7 +78,7 @@ export default function TrainingStatusChart() {
               </div>
 
               <span className="text-xs xl:text-base shrink-0 font-semibold text-black">
-                {item.value} ({item.percentage}%)
+                {item.value}%
               </span>
             </div>
           ))}

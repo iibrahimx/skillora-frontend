@@ -6,8 +6,11 @@ interface AuthState {
   token: string | null;
   user: User | null;
 
+  hasHydrated: boolean;
+
   setAuth: (token: string, user: User) => void;
   logout: () => void;
+  setHasHydrated: (state: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -16,6 +19,13 @@ export const useAuthStore = create<AuthState>()(
       token: null,
 
       user: null,
+
+      hasHydrated: false,
+
+      setHasHydrated: (state) =>
+        set({
+          hasHydrated: state,
+        }),
 
       setAuth: (token, user) =>
         set({
@@ -31,6 +41,10 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: "skillora-auth",
+
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );

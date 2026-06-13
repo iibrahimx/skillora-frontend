@@ -2,12 +2,32 @@
 
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { completionData } from "./analytics-data";
 import { Info } from "lucide-react";
-// import { completionData } from '@/lib/data';
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function CompletionRates() {
-  const totalUsers = 1400;
+  const { data: analyticsData } = useAnalytics();
+
+  const analytics = analyticsData?.data;
+  const totalUsers = analytics?.activeUsers ?? 0;
+
+  const completionData = [
+    {
+      name: "Completed",
+      value: analytics?.completedPercentage ?? 0,
+      color: "#22c55e",
+    },
+    {
+      name: "In Progress",
+      value: analytics?.inProgressPercentage ?? 0,
+      color: "#a3a3a3",
+    },
+    {
+      name: "Not Started",
+      value: analytics?.notStartedPercentage ?? 0,
+      color: "#bbf7d0",
+    },
+  ];
 
   return (
     <section className="w-full h-full flex flex-col justify-between min-h-[390px] p-6">
@@ -66,13 +86,7 @@ export default function CompletionRates() {
                   </span>
                 </div>
                 <span className="font-bold text-gray-900 text-base tabular-nums">
-                  {item.value} (
-                  {item.name === "In Progress"
-                    ? "32"
-                    : item.name === "Completed"
-                      ? "78%"
-                      : "5%"}
-                  )
+                  {item.value}%
                 </span>
               </div>
             ))}
@@ -81,7 +95,9 @@ export default function CompletionRates() {
       </div>
 
       <div className="pt-3 border-t border-gray-300 flex justify-between items-center mt-2">
-        <span className="text-gray-900 font-bold text-base">Total Users</span>
+        <span className="text-gray-900 font-bold text-base">
+          Total Active Users
+        </span>
         <span className="text-xl font-bold text-gray-950 tabular-nums">
           {totalUsers}
         </span>
