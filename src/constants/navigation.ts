@@ -1,13 +1,12 @@
 import {
   LayoutDashboard,
   BarChart3,
-  ShieldCheck,
+  // ShieldCheck,
   Users,
   ClipboardList,
   BookOpen,
   Settings,
   HelpCircle,
-  LogOut,
 } from "lucide-react";
 
 export const navigationItems = [
@@ -21,11 +20,11 @@ export const navigationItems = [
     href: "/analytics",
     icon: BarChart3,
   },
-  {
-    label: "Compliance Monitoring",
-    href: "/compliance",
-    icon: ShieldCheck,
-  },
+  // {
+  //   label: "Compliance Monitoring",
+  //   href: "/compliance",
+  //   icon: ShieldCheck,
+  // },
   {
     label: "Employee Management",
     href: "/employees",
@@ -53,10 +52,5 @@ export const footerItems = [
     label: "Help",
     href: "/help",
     icon: HelpCircle,
-  },
-  {
-    label: "Logout",
-    href: "/logout",
-    icon: LogOut,
   },
 ];

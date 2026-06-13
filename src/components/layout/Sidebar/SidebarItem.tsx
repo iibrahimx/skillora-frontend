@@ -28,7 +28,7 @@ export default function SidebarItem({
       `}
     >
       <Icon size={20} />
-      <span className="text-sm font-medium">{label}</span>
+      <span className="text-xs font-medium">{label}</span>
     </Link>
   );
 }

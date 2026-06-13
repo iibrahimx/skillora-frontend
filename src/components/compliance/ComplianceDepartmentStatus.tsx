@@ -1,31 +1,19 @@
 "use client";
 
-import {
-  Building2,
-  Users,
-  Monitor,
-  Settings,
-  ShoppingBag,
-  Megaphone,
-  Headphones,
-  Scale,
-  TrendingUp,
-  TrendingDown,
-  Minus,
-  Info,
-} from "lucide-react";
+import Image from "next/image";
+import { TrendingUp, TrendingDown, Minus, Info } from "lucide-react";
 
-import { departmentComplianceData } from "./mockData";
+import { departmentComplianceData } from "@/data/compliance-mock-data";
 
 const icons = {
-  Finance: Building2,
-  "Human Resources": Users,
-  "Information Technology": Monitor,
-  Operations: Settings,
-  Sales: ShoppingBag,
-  Marketing: Megaphone,
-  "Customer Services": Headphones,
-  Legal: Scale,
+  Finance: "/icons/finance-comp.svg",
+  "Human Resources": "/icons/hr-comp.svg",
+  "Information Technology": "/icons/it-comp.svg",
+  Operations: "/icons/operations-comp.svg",
+  Sales: "/icons/sales-comp.svg",
+  Marketing: "/icons/marketing-comp.svg",
+  "Customer Services": "/icons/customer-service-comp.svg",
+  Legal: "/icons/legal-comp.svg",
 };
 
 export default function ComplianceDepartmentStatus() {
@@ -47,7 +35,7 @@ export default function ComplianceDepartmentStatus() {
       </div>
 
       {/* Column Headers */}
-      <div className="grid gap-4 justify-between grid-cols-[2fr_2fr_60px] bg-[#D9D9D9]/30 px-5 py-3 text-sm font-semibold">
+      <div className="grid gap-4 mb-4 justify-between grid-cols-[2fr_2fr_60px] bg-[#D9D9D9]/30 px-5 py-3 text-sm font-semibold">
         <span>Department</span>
         <span>Compliance Rate</span>
         <span>Trend</span>
@@ -55,26 +43,26 @@ export default function ComplianceDepartmentStatus() {
 
       {/* Rows */}
       {departmentComplianceData.map((department) => {
-        const Icon = icons[department.department as keyof typeof icons];
+        const icon = icons[department.department as keyof typeof icons];
 
         return (
           <div
             key={department.department}
-            className="grid gap-4 justify-between grid-cols-[2fr_2fr_60px] items-center px-5 py-4"
+            className="grid gap-6 justify-between grid-cols-[2fr_2fr_60px] items-center px-5 py-4"
           >
             {/* Department */}
             <div className="flex items-center gap-3">
               <div
                 className="flex h-8 w-8 items-center justify-center rounded-lg"
                 style={{
-                  backgroundColor: `${department.color}20`,
+                  backgroundColor: `${department.color}`,
                 }}
               >
-                <Icon
-                  size={16}
-                  style={{
-                    color: department.color,
-                  }}
+                <Image
+                  src={icon}
+                  alt={department.department}
+                  width={20}
+                  height={20}
                 />
               </div>
 

@@ -1,5 +1,7 @@
 "use client";
+
 import React, { useState } from "react";
+import Image from "next/image";
 import { IoChevronBack } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
 
@@ -15,9 +17,11 @@ export function HelpCenter() {
         </button>
 
         <div className="flex items-center gap-4">
-          <img
+          <Image
             src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780726301/logomark_asxdew.svg"
             alt="skillora logo"
+            width={24}
+            height={24}
             className="w-6 h-6"
           />
           <span className="text-md font-bold">
@@ -26,9 +30,11 @@ export function HelpCenter() {
         </div>
 
         <div className="flex items-center gap-3">
-          <img
+          <Image
             src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780728036/Mask_group_txup0n.svg"
             alt="profile picture"
+            width={36}
+            height={36}
             className="w-9 h-9"
           />
           <div className="text-left">
@@ -47,15 +53,16 @@ export function HelpCenter() {
               <input
                 type="text"
                 placeholder="Search for solutions"
-                className="w-full pl-8 pr-2 py-2 text-gray-500 text-xs rounded-md border border-gray-300 pl-8 pr-4 py-2"
+                className="w-full pl-8 pr-2 py-2 text-gray-500 text-xs rounded-md border border-gray-300"
               />
             </div>
           </div>
         </div>
         <div className="w-[60%] h-full">
-          <img
+          <Image
             src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780731702/Rectangle_345_rht0so.svg"
             alt="icon"
+            fill
             className="w-full h-full object-cover"
           />
         </div>
@@ -85,27 +92,27 @@ export function HelpCenter() {
 
       <div className="max-w-6xl mx-auto px-4 mt-10">
         <div className="grid grid-cols-3 gap-4">
-          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold curso-pointer hover:opacity-70">
+          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold cursor-pointer hover:opacity-70">
             SkillOra Quality Checklist
           </button>
 
-          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold curso-pointer hover:opacity-70">
+          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold cursor-pointer hover:opacity-70">
             How to become a Premuim Instructor
           </button>
 
-          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold curso-pointer hover:opacity-70">
+          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold cursor-pointer hover:opacity-70">
             Instructor Revenue Share
           </button>
 
-          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold curso-pointer hover:opacity-70">
+          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold cursor-pointer hover:opacity-70">
             Guidelines and Agreement deals with SkillOra
           </button>
 
-          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold curso-pointer hover:opacity-70">
+          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold cursor-pointer hover:opacity-70">
             Promote your course with referral Links
           </button>
 
-          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold curso-pointer hover:opacity-70">
+          <button className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold cursor-pointer hover:opacity-70">
             Frequently Asked Questions
           </button>
         </div>
@@ -121,9 +128,11 @@ export function HelpCenter() {
         <div className="grid grid-cols-3 gap-4">
           <div className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780845457/payment-02_im7qvk.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
               />
 
@@ -138,9 +147,11 @@ export function HelpCenter() {
 
           <div className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780845569/tag-01_eseds2.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
               />
 
@@ -155,9 +166,11 @@ export function HelpCenter() {
 
           <div className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780845479/computer-video_avwnfv.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
               />
 
@@ -170,9 +183,11 @@ export function HelpCenter() {
 
           <div className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780845544/tools_veomex.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
               />
 
@@ -187,9 +202,11 @@ export function HelpCenter() {
 
           <div className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780845520/square-lock-01_cg8qfo.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
               />
 
@@ -204,9 +221,11 @@ export function HelpCenter() {
 
           <div className="border border-gray-400 rounded-md px-4 py-2 text-sm font-semibold">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="https://res.cloudinary.com/dtvriwhcw/image/upload/v1780845490/contact-02_tktz6f.svg"
                 alt="icon"
+                width={32}
+                height={32}
                 className="w-8 h-8"
               />
 

@@ -9,7 +9,7 @@ export interface EngagementMetric {
   value: string;
   change: string;
   isPositive: boolean;
-  type: 'time' | 'sessions' | 'interaction' | 'clicks';
+  type: "time" | "sessions" | "interaction" | "clicks";
 }
 
 export interface EngagementChartData {
