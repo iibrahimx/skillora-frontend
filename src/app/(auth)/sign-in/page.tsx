@@ -27,8 +27,37 @@ export default function SignInPage() {
         ]}
         initialValues={{ email: "", password: "" }}
         validationSchema={signInSchema}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={async (values) => {
+          try {
+            const res = await fetch(
+              "https://skillora-bi8e.onrender.com/api/auth/login",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+              }
+            );
+
+            const data = await res.json();
+
+            console.log("LOGIN RESPONSE:", data);
+
+            if (!res.ok) {
+              throw new Error(data.message || "Login failed");
+            }
+
+            localStorage.setItem("token", data.token);
+
+            alert("Login successful!");
+          } catch (error) {
+            console.error(error);
+
+            if (error instanceof Error) {
+              alert(error.message);
+            }
+          }
         }}
         buttonText="Log in"
         showSocialAuth={true}
